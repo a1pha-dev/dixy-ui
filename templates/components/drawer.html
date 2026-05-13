@@ -1,0 +1,49 @@
+<!-- Mission Drawer Overlay -->
+        <div class="mission-drawer-overlay" id="mission-drawer-overlay" onclick="closeMissionDrawer()"></div>
+
+        <!-- Mission Drawer -->
+        <div class="mission-drawer" id="mission-drawer">
+            <div class="mission-drawer-header">
+                <div class="mission-drawer-title">🎯 Текущее задание</div>
+                <button class="mission-drawer-close" onclick="closeMissionDrawer()">✕</button>
+            </div>
+            <div class="mission-drawer-body">
+                <div class="drawer-mission-card" id="drawer-mission-card">
+                    <div class="drawer-mission-title" id="drawer-mission-title">Загрузка...</div>
+                    <div class="drawer-mission-desc" id="drawer-mission-desc">Пожалуйста подождите...</div>
+                    <div class="drawer-mission-timer" id="drawer-mission-timer">0:00</div>
+                    <div class="drawer-progress-bar">
+                        <div class="drawer-progress-fill" id="drawer-progress-fill" style="width: 0%"></div>
+                    </div>
+                    <div class="drawer-progress-label">
+                        <span>Прогресс</span>
+                        <span id="drawer-progress-percent">0%</span>
+                    </div>
+                    <div class="drawer-stats-grid">
+                        <div class="drawer-stat-box">
+                            <div class="drawer-stat-label">Кликов</div>
+                            <div class="drawer-stat-value" id="drawer-stat-clicks">0</div>
+                        </div>
+                        <div class="drawer-stat-box">
+                            <div class="drawer-stat-label">Лишних</div>
+                            <div class="drawer-stat-value" id="drawer-stat-unnecessary">0</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="drawer-actions">
+                    <button class="drawer-btn" onclick="goToMissionScreen()">📋 Открыть полное задание</button>
+                    <button class="drawer-btn secondary" onclick="startNewMissionFromDrawer()">✨ Новое задание</button>
+                </div>
+                <div class="drawer-hint">
+                    Выполните задание, перемещаясь по приложению. Прогресс обновляется автоматически.
+                </div>
+            </div>
+        </div>
+
+        <!-- Mission Drawer Trigger (edge slider) -->
+        <button class="mission-drawer-trigger" id="mission-drawer-trigger" onclick="openMissionDrawer()">
+            <span class="trigger-badge" id="trigger-badge">!</span>
+            <span>Задание</span>
+        </button>
+
+        <!-- Bottom Navigation -->

@@ -46,8 +46,8 @@ PROMOTIONS = [
 ]
 
 USER_PROFILE = {
-    "name": "Виталий Друг",
-    "email": "vitaliy@dixy.ru",
+    "name": "Иванов Иван",
+    "email": "ivanov@dixy.ru",
     "phone": "+7 (999) 123-45-67",
     "status": "Клуб Друзей Дикси",
     "loyalty_points": 2340,

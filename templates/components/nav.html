@@ -1,0 +1,32 @@
+<!-- Bottom Navigation -->
+        <div class="nav-bar">
+            <div class="nav-item active" data-screen="home-screen" onclick="switchScreen(event)">
+                <span>🏠</span>
+                <span class="nav-label">Главная</span>
+            </div>
+            <div class="nav-item" data-screen="catalog-screen" onclick="switchScreen(event)">
+                <span>📂</span>
+                <span class="nav-label">Каталог</span>
+            </div>
+            <div class="nav-item" data-screen="summer-screen" onclick="switchScreen(event)">
+                <span>☀️</span>
+                <span class="nav-label">Скоро лето</span>
+            </div>
+            <div class="nav-item" data-screen="promo-screen" onclick="switchScreen(event)">
+                <span>🏷️</span>
+                <span class="nav-label">Акции</span>
+            </div>
+            <div class="nav-item" data-screen="profile-screen" onclick="switchScreen(event)">
+                <span>👤</span>
+                <span class="nav-label">Профиль</span>
+            </div>
+        </div>
+
+    <!-- Floating Cart Button -->
+    <div class="floating-cart-btn" id="floating-cart-btn" onclick="switchToScreen('cart-screen'); trackClick(currentScreen, 'cart-screen');">
+        <span>🛒</span>
+        <span class="cart-badge" id="floating-cart-badge" style="display: none;">0</span>
+        <div class="floating-cart-label">Корзина</div>
+    </div>
+
+    <!-- Success Modal -->

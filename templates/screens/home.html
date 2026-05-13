@@ -1,0 +1,201 @@
+<!-- Home Screen -->
+            <div class="screen active" id="home-screen">
+                <!-- Loyalty Header -->
+                <div class="loyalty-header">
+                    <div class="loyalty-top-row">
+                        <div class="loyalty-labels">
+                            <div class="loyalty-label">Уровень</div>
+                            <div class="loyalty-label">Кэшбэк</div>
+                        </div>
+                        <div class="loyalty-qr-icon" onclick="trackClick('home->profile'); switchToScreen('profile-screen')">
+                            <div class="mini-qr"></div>
+                        </div>
+                    </div>
+                    <div class="loyalty-values">
+                        <div class="loyalty-value">Друг</div>
+                        <div class="loyalty-value">1,5%</div>
+                    </div>
+                    <div class="loyalty-barcode" onclick="trackClick('home->profile'); switchToScreen('profile-screen')">
+                        <div class="barcode-display">
+                            <div class="barcode-lines"></div>
+                            <div class="barcode-number">2966107476486902</div>
+                        </div>
+                    </div>
+                    <div class="loyalty-date">23.04.2026 11:55:08</div>
+                    <div class="loyalty-cashback-hint">
+                        <span>Ещё 12 дней с покупками до 2% кешбэка в следующем ...</span>
+                        <span>›</span>
+                    </div>
+                </div>
+
+                <!-- Quick Icons -->
+                <div class="quick-icons-scroll">
+                    <div class="quick-icon-item" onclick="trackClick('home->catalog'); switchToScreen('catalog-screen')">
+                        <div class="quick-icon-circle">
+                            <div class="quick-icon-emoji">🎁</div>
+                            <div class="quick-icon-badge">7</div>
+                        </div>
+                        <div class="quick-icon-label">Товары по<br>карте</div>
+                    </div>
+                    <div class="quick-icon-item" onclick="trackClick('home->profile'); switchToScreen('profile-screen')">
+                        <div class="quick-icon-circle">
+                            <div class="quick-icon-emoji">📝</div>
+                        </div>
+                        <div class="quick-icon-label">Мои покупки</div>
+                    </div>
+                    <div class="quick-icon-item">
+                        <div class="quick-icon-circle">
+                            <div class="quick-icon-emoji">🎟️</div>
+                            <div class="quick-icon-badge">2</div>
+                        </div>
+                        <div class="quick-icon-label">Купоны</div>
+                    </div>
+                    <div class="quick-icon-item">
+                        <div class="quick-icon-circle">
+                            <div class="quick-icon-emoji">🏷️</div>
+                            <div class="quick-icon-badge">1</div>
+                        </div>
+                        <div class="quick-icon-label">Наклейки</div>
+                    </div>
+                    <div class="quick-icon-item" onclick="trackClick('home->catalog'); switchToScreen('catalog-screen')">
+                        <div class="quick-icon-circle">
+                            <div class="quick-icon-emoji">❤️</div>
+                            <div class="quick-icon-badge">0</div>
+                        </div>
+                        <div class="quick-icon-label">Любимые<br>товары</div>
+                    </div>
+                    <div class="quick-icon-item" onclick="trackClick('home->catalog'); switchToScreen('catalog-screen')">
+                        <div class="quick-icon-circle">
+                            <div class="quick-icon-emoji">⭐</div>
+                            <div class="quick-icon-badge">0</div>
+                        </div>
+                        <div class="quick-icon-label">Любимые<br>категории</div>
+                    </div>
+                    <div class="quick-icon-item" onclick="trackClick('home->promo'); switchToScreen('promo-screen')">
+                        <div class="quick-icon-circle">
+                            <div class="quick-icon-emoji">🎫</div>
+                            <div class="quick-icon-badge">0/3</div>
+                        </div>
+                        <div class="quick-icon-label">Промокоды</div>
+                    </div>
+                </div>
+
+                <!-- Store Address + Search -->
+                <div class="store-bar">
+                    <div class="store-left">
+                        <span>🏪</span>
+                        <span>В магазине</span>
+                    </div>
+                    <div class="store-address">
+                        Комплекс Бутово-Парк, корп. д. 4
+                        <span class="store-distance">г Видное, пгт. Б...</span>
+                    </div>
+                    <div class="store-action">↻</div>
+                </div>
+                <div class="search-bar" onclick="trackClick('home->catalog'); switchToScreen('catalog-screen')">
+                    <span class="search-icon">🔍</span>
+                    <span class="search-text">Искать в Дикси...</span>
+                    <span class="search-scan">📷</span>
+                </div>
+
+                <!-- Main Banner -->
+                <div class="main-banner" onclick="trackClick('home->catalog'); switchToScreen('catalog-screen')">
+                    <div class="main-banner-text">
+                        <div class="main-banner-title">ШИРОКИЙ АССОРТИМЕНТ<br>И ВЫГОДНЫЕ ЦЕНЫ!</div>
+                        <button class="main-banner-btn">За покупками!</button>
+                    </div>
+                    <div class="main-banner-fruit">🍊</div>
+                    <div class="main-banner-veg">🥦</div>
+                </div>
+
+                <!-- Mini Product Scroll -->
+                <div class="mini-products-scroll">
+                    <div class="mini-product" onclick="addToCart(1, 'Яблоки Гала', 89)">
+                        <div class="mini-product-emoji">🍎</div>
+                        <div class="mini-product-price">89₽</div>
+                    </div>
+                    <div class="mini-product" onclick="addToCart(2, 'Банан', 79)">
+                        <div class="mini-product-emoji">🍌</div>
+                        <div class="mini-product-price">79₽</div>
+                    </div>
+                    <div class="mini-product" onclick="addToCart(3, 'Апельсины', 84)">
+                        <div class="mini-product-emoji">🍊</div>
+                        <div class="mini-product-price">84₽</div>
+                    </div>
+                    <div class="mini-product" onclick="addToCart(4, 'Помидоры', 99)">
+                        <div class="mini-product-emoji">🍅</div>
+                        <div class="mini-product-price">99₽</div>
+                    </div>
+                    <div class="mini-product" onclick="addToCart(5, 'Огурцы', 69)">
+                        <div class="mini-product-emoji">🥒</div>
+                        <div class="mini-product-price">69₽</div>
+                    </div>
+                    <div class="mini-product" onclick="addToCart(6, 'Морковь', 45)">
+                        <div class="mini-product-emoji">🥕</div>
+                        <div class="mini-product-price">45₽</div>
+                    </div>
+                </div>
+
+                <!-- Popular Brands -->
+                <div class="home-section-title">Популярные бренды <span class="section-arrow">→</span></div>
+                <div class="brands-row">
+                    <div class="brand-chip" style="background:#E31E24; color:white;">НЕСКАФЕ</div>
+                    <div class="brand-chip" style="background:#00A0E3; color:white;">Чистая Линия</div>
+                    <div class="brand-chip" style="background:#E31E24; color:white;">БАЛТИКА</div>
+                    <div class="brand-chip" style="background:#FF6B00; color:white;">Больше!</div>
+                </div>
+
+                <!-- Promo Banners Row -->
+                <div class="promo-banners-row">
+                    <div class="promo-banner-small" style="background:#7CB342;">
+                        <div class="promo-banner-logo">Олейна</div>
+                    </div>
+                    <div class="promo-banner-small" style="background:#2E7D32;">
+                        <div class="promo-banner-logo">TAKE IT</div>
+                    </div>
+                    <div class="promo-banner-small" style="background:#C62828;">
+                        <div class="promo-banner-logo">Мама мыла раму</div>
+                    </div>
+                </div>
+
+                <!-- Big Promo -->
+                <div class="big-promo-banner" onclick="trackClick('home->promo'); switchToScreen('promo-screen')">
+                    <div class="big-promo-left">
+                        <div class="big-promo-tag">Дикси х Брат</div>
+                        <div class="big-promo-title">РОЗЫГРЫШ</div>
+                        <div class="big-promo-sub">Выиграй уникальный мерч Дикси х Брат</div>
+                    </div>
+                    <div class="big-promo-emoji">🎁</div>
+                </div>
+
+                <!-- Catalog Preview -->
+                <div class="home-section-title">Каталог <span class="section-arrow">→</span></div>
+                <div class="catalog-preview-grid">
+                    <div class="catalog-preview-item" onclick="trackClick('home->catalog'); switchToScreen('catalog-screen')">
+                        <div class="catalog-preview-img">🍎</div>
+                        <div class="catalog-preview-name">Овощи, фрукты</div>
+                    </div>
+                    <div class="catalog-preview-item" onclick="trackClick('home->catalog'); switchToScreen('catalog-screen')">
+                        <div class="catalog-preview-img">🥗</div>
+                        <div class="catalog-preview-name">Готовая еда</div>
+                    </div>
+                    <div class="catalog-preview-item" onclick="trackClick('home->catalog'); switchToScreen('catalog-screen')">
+                        <div class="catalog-preview-img">🥤</div>
+                        <div class="catalog-preview-name">Вода, соки, напитки</div>
+                    </div>
+                    <div class="catalog-preview-item" onclick="trackClick('home->catalog'); switchToScreen('catalog-screen')">
+                        <div class="catalog-preview-img">🥛</div>
+                        <div class="catalog-preview-name">Молочные продукты</div>
+                    </div>
+                    <div class="catalog-preview-item" onclick="trackClick('home->catalog'); switchToScreen('catalog-screen')">
+                        <div class="catalog-preview-img">🍞</div>
+                        <div class="catalog-preview-name">Хлеб и выпечка</div>
+                    </div>
+                    <div class="catalog-preview-item" onclick="trackClick('home->catalog'); switchToScreen('catalog-screen')">
+                        <div class="catalog-preview-img">🥜</div>
+                        <div class="catalog-preview-name">Чипсы, орехи, снеки</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mission/Quest Screen -->
