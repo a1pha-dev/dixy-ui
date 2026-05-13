@@ -244,68 +244,105 @@
             const user = state.profile;
             const content = document.getElementById('profile-content');
             content.innerHTML = `
-                <div class="profile-section profile-header-card">
-                    <div class="profile-top-row">
-                        <div class="profile-avatar">${user.avatar}</div>
-                        <div class="profile-info">
-                            <div class="profile-name">${user.name}</div>
-                            <div class="profile-subtitle">Личные данные ›</div>
+                <!-- Loyalty Card -->
+                <div class="profile-loyalty-card">
+                    <div class="loyalty-card-top">
+                        <div class="loyalty-card-labels">
+                            <div class="loyalty-card-label">уровень</div>
+                            <div class="loyalty-card-label">кэшбэк</div>
                         </div>
+                        <div class="loyalty-card-coins">
+                            <span>🪙</span>
+                            <span class="coin-count">0</span>
+                        </div>
+                    </div>
+                    <div class="loyalty-card-values">
+                        <div class="loyalty-card-value">Друг</div>
+                        <div class="loyalty-card-value">1,5%</div>
+                    </div>
+                    <div class="loyalty-barcode-block">
+                        <div class="barcode-lines-large"></div>
+                    </div>
+                    <div class="loyalty-date">23.04.2026 11:55:08</div>
+                    <div class="loyalty-hint-row">
+                        <span>Ещё 12 дней с покупками до 2% кешбэка в следу...</span>
+                        <span class="hint-arrow">›</span>
                     </div>
                 </div>
 
-                <div class="profile-section loyalty-card-section">
-                    <div class="loyalty-card-header">
-                        <div class="loyalty-card-title">📇 Моя карта Дикси</div>
-                        <div class="loyalty-card-hint">Для получения скидок и начисления монет применяй штрих-код</div>
+                <!-- Quick Actions (3 items) -->
+                <div class="profile-quick-actions">
+                    <div class="profile-quick-item" onclick="trackClick('profile->purchases'); switchToScreen('catalog-screen')">
+                        <div class="profile-quick-circle">
+                            <span>📝</span>
+                        </div>
+                        <span class="profile-quick-label">Покупки</span>
                     </div>
-                    <div class="barcode-full-profile">
-                        <div class="barcode-lines-profile"></div>
-                        <div class="barcode-number-profile">2966107476486902</div>
+                    <div class="profile-quick-item" onclick="trackClick('profile->favorites')">
+                        <div class="profile-quick-circle">
+                            <span>🏷️</span>
+                        </div>
+                        <span class="profile-quick-label">Избранное</span>
                     </div>
-                    <button class="barcode-refresh-btn">⟳ Обновить штрих-код</button>
+                    <div class="profile-quick-item" onclick="trackClick('profile->promocodes')">
+                        <div class="profile-quick-circle">
+                            <span>🎁</span>
+                        </div>
+                        <span class="profile-quick-label">Промокоды</span>
+                    </div>
                 </div>
 
-                <div class="profile-section">
-                    <div class="profile-list-item" onclick="trackClick('profile->region')">
-                        <div class="profile-list-icon">📍</div>
-                        <div class="profile-list-content">
-                            <div class="profile-list-title">Регион</div>
-                            <div class="profile-list-desc">${user.region || 'Москва'}</div>
+                <!-- Profile Sections List -->
+                <div class="profile-sections-list">
+                    <div class="profile-section-card">
+                        <div class="profile-section-icon">
+                            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 21 18 21 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
                         </div>
-                        <div class="profile-list-arrow">›</div>
+                        <div class="profile-section-text">
+                            <div class="profile-section-title">Регион</div>
+                            <div class="profile-section-desc">Москва</div>
+                        </div>
+                        <div class="profile-section-arrow">›</div>
                     </div>
-                    <div class="profile-list-item" onclick="trackClick('profile->addresses')">
-                        <div class="profile-list-icon">📮</div>
-                        <div class="profile-list-content">
-                            <div class="profile-list-title">Мои адреса</div>
-                            <div class="profile-list-desc">Адреса доставки, магазины самовывоза</div>
+                    <div class="profile-section-card">
+                        <div class="profile-section-icon">
+                            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                         </div>
-                        <div class="profile-list-arrow">›</div>
+                        <div class="profile-section-text">
+                            <div class="profile-section-title">Мои адреса</div>
+                            <div class="profile-section-desc">Адреса доставки, магазины самовывоза</div>
+                        </div>
+                        <div class="profile-section-arrow">›</div>
                     </div>
-                    <div class="profile-list-item" onclick="trackClick('profile->payment')">
-                        <div class="profile-list-icon">💳</div>
-                        <div class="profile-list-content">
-                            <div class="profile-list-title">Способы оплаты</div>
-                            <div class="profile-list-desc">Твои сохраненные банковские карты</div>
+                    <div class="profile-section-card">
+                        <div class="profile-section-icon">
+                            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
                         </div>
-                        <div class="profile-list-arrow">›</div>
+                        <div class="profile-section-text">
+                            <div class="profile-section-title">Способы оплаты</div>
+                            <div class="profile-section-desc">Твои сохраненные банковские карты</div>
+                        </div>
+                        <div class="profile-section-arrow">›</div>
                     </div>
-                    <div class="profile-list-item" onclick="trackClick('profile->loyalty-cards')">
-                        <div class="profile-list-icon">🎫</div>
-                        <div class="profile-list-content">
-                            <div class="profile-list-title">Мои карты лояльности</div>
-                            <div class="profile-list-desc">Пластиковые и социальные карты</div>
+                    <div class="profile-section-card">
+                        <div class="profile-section-icon">
+                            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
                         </div>
-                        <div class="profile-list-arrow">›</div>
+                        <div class="profile-section-text">
+                            <div class="profile-section-title">Мои карты лояльности</div>
+                            <div class="profile-section-desc">Пластиковые и социальные карты</div>
+                        </div>
+                        <div class="profile-section-arrow">›</div>
                     </div>
-                    <div class="profile-list-item" onclick="trackClick('profile->friends-bonus')">
-                        <div class="profile-list-icon">👥</div>
-                        <div class="profile-list-content">
-                            <div class="profile-list-title">Бонусы за друзей</div>
-                            <div class="profile-list-desc">Приглашай друзей и получай бонусы</div>
+                    <div class="profile-section-card">
+                        <div class="profile-section-icon">
+                            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                         </div>
-                        <div class="profile-list-arrow">›</div>
+                        <div class="profile-section-text">
+                            <div class="profile-section-title">Бонусы за друзей</div>
+                            <div class="profile-section-desc">Приглашай друзей и получай бонусы</div>
+                        </div>
+                        <div class="profile-section-arrow">›</div>
                     </div>
                 </div>
 
