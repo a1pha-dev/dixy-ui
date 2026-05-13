@@ -244,37 +244,68 @@
             const user = state.profile;
             const content = document.getElementById('profile-content');
             content.innerHTML = `
-                <div class="profile-section">
-                    <div class="profile-header">
+                <div class="profile-section profile-header-card">
+                    <div class="profile-top-row">
                         <div class="profile-avatar">${user.avatar}</div>
-                        <div class="profile-name">${user.name}</div>
-                        <div class="profile-status">${user.status}</div>
-                    </div>
-                </div>
-
-                <div class="profile-section">
-                    <div class="points-display">
-                        <div>🎁</div>
-                        <div>
-                            <div class="points-number">${user.loyalty_points}</div>
-                            <div class="points-label">баллов</div>
+                        <div class="profile-info">
+                            <div class="profile-name">${user.name}</div>
+                            <div class="profile-subtitle">Личные данные ›</div>
                         </div>
                     </div>
                 </div>
 
                 <div class="profile-section loyalty-card-section">
-                    <div class="loyalty-card-title">📇 Моя карта Дикси</div>
-                    <div class="qr-wrapper">
-                        <div class="qr-code">
-                            <div class="qr-pattern"></div>
-                            <div class="qr-center">
-                                <div class="qr-center-inner"></div>
-                            </div>
-                        </div>
+                    <div class="loyalty-card-header">
+                        <div class="loyalty-card-title">📇 Моя карта Дикси</div>
+                        <div class="loyalty-card-hint">Для получения скидок и начисления монет применяй штрих-код</div>
                     </div>
-                    <div class="barcode-wrapper">
-                        <div class="barcode-lines"></div>
-                        <div class="barcode-number">2966107476486902</div>
+                    <div class="barcode-full-profile">
+                        <div class="barcode-lines-profile"></div>
+                        <div class="barcode-number-profile">2966107476486902</div>
+                    </div>
+                    <button class="barcode-refresh-btn">⟳ Обновить штрих-код</button>
+                </div>
+
+                <div class="profile-section">
+                    <div class="profile-list-item" onclick="trackClick('profile->region')">
+                        <div class="profile-list-icon">📍</div>
+                        <div class="profile-list-content">
+                            <div class="profile-list-title">Регион</div>
+                            <div class="profile-list-desc">${user.region || 'Москва'}</div>
+                        </div>
+                        <div class="profile-list-arrow">›</div>
+                    </div>
+                    <div class="profile-list-item" onclick="trackClick('profile->addresses')">
+                        <div class="profile-list-icon">📮</div>
+                        <div class="profile-list-content">
+                            <div class="profile-list-title">Мои адреса</div>
+                            <div class="profile-list-desc">Адреса доставки, магазины самовывоза</div>
+                        </div>
+                        <div class="profile-list-arrow">›</div>
+                    </div>
+                    <div class="profile-list-item" onclick="trackClick('profile->payment')">
+                        <div class="profile-list-icon">💳</div>
+                        <div class="profile-list-content">
+                            <div class="profile-list-title">Способы оплаты</div>
+                            <div class="profile-list-desc">Твои сохраненные банковские карты</div>
+                        </div>
+                        <div class="profile-list-arrow">›</div>
+                    </div>
+                    <div class="profile-list-item" onclick="trackClick('profile->loyalty-cards')">
+                        <div class="profile-list-icon">🎫</div>
+                        <div class="profile-list-content">
+                            <div class="profile-list-title">Мои карты лояльности</div>
+                            <div class="profile-list-desc">Пластиковые и социальные карты</div>
+                        </div>
+                        <div class="profile-list-arrow">›</div>
+                    </div>
+                    <div class="profile-list-item" onclick="trackClick('profile->friends-bonus')">
+                        <div class="profile-list-icon">👥</div>
+                        <div class="profile-list-content">
+                            <div class="profile-list-title">Бонусы за друзей</div>
+                            <div class="profile-list-desc">Приглашай друзей и получай бонусы</div>
+                        </div>
+                        <div class="profile-list-arrow">›</div>
                     </div>
                 </div>
 
