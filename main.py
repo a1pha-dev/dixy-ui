@@ -19,6 +19,7 @@ import os
 from app.routes_catalog import router as catalog_router
 from app.routes_missions import router as missions_router
 from app.config import UI_CONFIG
+from app.analytics import click_tracker
 
 # Initialize FastAPI app
 app = FastAPI(
@@ -59,6 +60,23 @@ async def index(request: Request):
 async def health():
     """Health check endpoint"""
     return {"status": "ok", "service": "dixy-ui"}
+
+
+@app.post("/api/click-log")
+async def log_click(data: dict):
+    """Log user click interaction"""
+    click_data = click_tracker.log_click(
+        data.get("from"),
+        data.get("to"),
+        data.get("timestamp")
+    )
+    return click_data
+
+
+@app.get("/api/analytics/clicks")
+async def get_click_stats():
+    """Get click statistics"""
+    return click_tracker.get_click_statistics()
 
 
 if __name__ == "__main__":
