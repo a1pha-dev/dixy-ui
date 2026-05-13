@@ -3,28 +3,29 @@
                 <!-- Loyalty Header -->
                 <div class="loyalty-header">
                     <div class="loyalty-top-row">
-                        <div class="loyalty-labels">
-                            <div class="loyalty-label">Уровень</div>
-                            <div class="loyalty-label">Кэшбэк</div>
+                        <div class="loyalty-left">
+                            <div class="loyalty-label-col">
+                                <div class="loyalty-label">Уровень</div>
+                                <div class="loyalty-value-bold">Друг</div>
+                            </div>
+                            <div class="loyalty-label-col">
+                                <div class="loyalty-label">Кэшбэк</div>
+                                <div class="loyalty-value-bold">1,5%</div>
+                            </div>
                         </div>
-                        <div class="loyalty-qr-icon" onclick="trackClick('home->profile'); switchToScreen('profile-screen')">
-                            <div class="mini-qr"></div>
-                        </div>
-                    </div>
-                    <div class="loyalty-values">
-                        <div class="loyalty-value">Друг</div>
-                        <div class="loyalty-value">1,5%</div>
-                    </div>
-                    <div class="loyalty-barcode" onclick="trackClick('home->profile'); switchToScreen('profile-screen')">
-                        <div class="barcode-display">
-                            <div class="barcode-lines"></div>
-                            <div class="barcode-number">2966107476486902</div>
+                        <div class="loyalty-coins" onclick="trackClick('home->profile'); switchToScreen('profile-screen')">
+                            <div class="loyalty-coin-icon">🪙</div>
+                            <div class="loyalty-coin-count">0</div>
                         </div>
                     </div>
-                    <div class="loyalty-date">23.04.2026 11:55:08</div>
-                    <div class="loyalty-cashback-hint">
-                        <span>Ещё 12 дней с покупками до 2% кешбэка в следующем ...</span>
-                        <span>›</span>
+                    <div class="loyalty-barcode-full" onclick="trackClick('home->profile'); switchToScreen('profile-screen')">
+                        <div class="barcode-lines"></div>
+                        <div class="barcode-number">2966107476486902</div>
+                    </div>
+                    <div class="loyalty-date-small">23.04.2026 11:55:08</div>
+                    <div class="loyalty-cashback-hint-full">
+                        <span>Ещё 12 дней с покупками до 2% кешбэка в следующем месяце</span>
+                        <span class="hint-arrow">›</span>
                     </div>
                 </div>
 

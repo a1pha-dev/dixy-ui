@@ -1009,37 +1009,101 @@
             position: relative;
             overflow: hidden;
         }
-        .loyalty-top-row { display: flex; justify-content: space-between; align-items: flex-start; }
-        .loyalty-labels { display: flex; gap: 24px; }
-        .loyalty-label { font-size: 11px; opacity: 0.9; text-transform: uppercase; letter-spacing: 0.5px; }
-        .loyalty-qr-icon {
-            width: 40px; height: 40px; background: white; border-radius: 8px;
-            display: flex; align-items: center; justify-content: center; cursor: pointer;
+
+        .loyalty-top-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
         }
-        .mini-qr {
-            width: 24px; height: 24px;
-            background: repeating-linear-gradient(0deg, #333 0, #333 25%, transparent 25%, transparent 50%),
-                        repeating-linear-gradient(90deg, #333 0, #333 25%, transparent 25%, transparent 50%);
-            background-size: 8px 8px;
-            border: 2px solid #333;
+
+        .loyalty-left {
+            display: flex;
+            gap: 24px;
         }
-        .loyalty-values { display: flex; gap: 24px; margin-top: 4px; }
-        .loyalty-value { font-size: 28px; font-weight: 700; }
-        .loyalty-barcode {
-            background: white; border-radius: 12px; margin: 12px auto; padding: 12px 16px;
-            width: 220px; cursor: pointer;
+
+        .loyalty-label-col {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
         }
-        .barcode-display { display: flex; flex-direction: column; align-items: center; gap: 6px; }
-        .barcode-lines {
-            height: 50px; width: 100%;
+
+        .loyalty-label {
+            font-size: 11px;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .loyalty-value-bold {
+            font-size: 28px;
+            font-weight: 800;
+            line-height: 1.1;
+        }
+
+        .loyalty-coins {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+            background: rgba(255,255,255,0.2);
+            border-radius: 16px;
+            padding: 4px 10px;
+        }
+
+        .loyalty-coin-icon {
+            font-size: 20px;
+        }
+
+        .loyalty-coin-count {
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .loyalty-barcode-full {
+            background: white;
+            border-radius: 12px;
+            margin: 8px 0 6px;
+            padding: 10px 12px;
+            cursor: pointer;
+        }
+
+        .loyalty-barcode-full .barcode-lines {
+            height: 50px;
+            width: 100%;
             background: repeating-linear-gradient(90deg, #000 0px, #000 2px, transparent 2px, transparent 4px);
         }
-        .barcode-number { font-size: 11px; color: #333; font-family: 'Courier New', monospace; letter-spacing: 1px; }
-        .loyalty-date { font-size: 11px; opacity: 0.9; text-align: center; margin-bottom: 8px; }
-        .loyalty-cashback-hint {
-            display: flex; justify-content: space-between; align-items: center;
-            font-size: 12px; opacity: 0.95; padding: 8px 12px;
-            background: rgba(255,255,255,0.15); border-radius: 8px;
+
+        .loyalty-barcode-full .barcode-number {
+            font-size: 11px;
+            color: #333;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 1px;
+            text-align: center;
+            margin-top: 4px;
+        }
+
+        .loyalty-date-small {
+            font-size: 10px;
+            opacity: 0.85;
+            text-align: center;
+            margin-bottom: 6px;
+        }
+
+        .loyalty-cashback-hint-full {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            opacity: 0.95;
+            padding: 8px 12px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 8px;
+        }
+
+        .hint-arrow {
+            font-size: 16px;
+            margin-left: 4px;
         }
 
         .quick-icons-scroll {
