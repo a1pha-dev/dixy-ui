@@ -1005,9 +1005,11 @@
         .loyalty-header {
             background: linear-gradient(135deg, #FF6B00 0%, #FF8A38 100%);
             color: white;
-            padding: 16px;
+            padding: 16px 16px 20px;
             position: relative;
             overflow: hidden;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 8px;
         }
 
         .loyalty-top-row {
@@ -1106,224 +1108,213 @@
             margin-left: 4px;
         }
 
-        .quick-icons-scroll {
-            display: flex; gap: 16px; overflow-x: auto; padding: 16px; background: white;
-        }
-        .quick-icons-scroll::-webkit-scrollbar { display: none; }
-        .quick-icon-item {
-            display: flex; flex-direction: column; align-items: center; gap: 6px;
-            flex-shrink: 0; cursor: pointer;
-        }
-        .quick-icon-circle {
-            width: 56px; height: 56px; border-radius: 50%; background: #FFF5ED;
-            display: flex; align-items: center; justify-content: center;
-            position: relative; font-size: 24px;
-        }
-        .quick-icon-badge {
-            position: absolute; top: -4px; right: -4px; background: #FF6B00; color: white;
-            border-radius: 50%; min-width: 18px; height: 18px; font-size: 10px; font-weight: 700;
-            display: flex; align-items: center; justify-content: center; padding: 0 4px;
-        }
-        .quick-icon-label { font-size: 11px; text-align: center; color: #333; line-height: 1.3; }
-
-        .store-bar {
-            display: flex; align-items: center; gap: 8px; padding: 8px 16px;
-            font-size: 13px; color: #666;
-        }
-        .store-left { display: flex; align-items: center; gap: 4px; font-weight: 600; color: #333; }
-        .store-address { flex: 1; font-size: 12px; color: #999; }
-        .store-distance { margin-left: 4px; }
-        .store-action { font-size: 16px; color: #999; }
-
-        .search-bar {
-            display: flex; align-items: center; gap: 8px;
-            margin: 0 16px 12px; padding: 10px 12px;
-            background: #f5f5f5; border-radius: 10px;
-            font-size: 14px; color: #999; cursor: pointer;
-        }
-        .search-icon { font-size: 16px; }
-        .search-text { flex: 1; }
-        .search-scan { font-size: 18px; }
-
-        .main-banner {
-            background: #f0f0f0; margin: 0 16px 12px; border-radius: 16px;
-            padding: 16px; display: flex; align-items: center; justify-content: space-between;
-            position: relative; overflow: hidden; min-height: 140px;
-        }
-        .main-banner-text { flex: 1; z-index: 2; }
-        .main-banner-title {
-            font-size: 16px; font-weight: 800; color: #FF6B00;
-            text-transform: uppercase; margin-bottom: 12px; line-height: 1.2;
-        }
-        .main-banner-btn {
-            background: #4A148C; color: white; border: none; border-radius: 20px;
-            padding: 10px 20px; font-size: 13px; font-weight: 700; cursor: pointer;
-        }
-        .main-banner-fruit {
-            font-size: 64px; position: absolute; left: -10px; bottom: -10px;
-            opacity: 0.3; z-index: 1;
-        }
-        .main-banner-veg {
-            font-size: 64px; position: absolute; right: -10px; bottom: -10px;
-            opacity: 0.3; z-index: 1;
+        /* Quick Actions Grid (2x4) */
+        .quick-actions-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            padding: 16px;
+            background: white;
         }
 
-        .mini-products-scroll {
-            display: flex; gap: 8px; overflow-x: auto; padding: 0 16px 16px;
-        }
-        .mini-products-scroll::-webkit-scrollbar { display: none; }
-        .mini-product {
-            flex-shrink: 0; width: 60px;
-            display: flex; flex-direction: column; align-items: center; gap: 4px;
+        .quick-action-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
             cursor: pointer;
         }
-        .mini-product-emoji {
-            font-size: 32px; width: 48px; height: 48px;
-            display: flex; align-items: center; justify-content: center;
-            background: #f9f9f9; border-radius: 50%;
-        }
-        .mini-product-price { font-size: 11px; font-weight: 600; color: #FF6B00; }
 
-        /* QR & Barcode in Profile */
-        .loyalty-card-section {
-            background: linear-gradient(135deg, #FF6B00 0%, #FF8A38 100%);
-            border-radius: 16px;
-            padding: 20px;
+        .quick-action-circle {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: #FFF5ED;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            font-size: 24px;
+        }
+
+        .quick-action-badge {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            background: #FF6B00;
             color: white;
-            text-align: center;
-        }
-        .loyalty-card-title { font-size: 14px; font-weight: 600; margin-bottom: 12px; opacity: 0.95; }
-        .qr-wrapper {
-            background: white; border-radius: 12px; padding: 12px;
-            display: inline-block; margin-bottom: 12px;
-        }
-        .qr-code {
-            width: 120px; height: 120px; background: white; position: relative;
-        }
-        .qr-pattern {
-            width: 100%; height: 100%;
-            background-image:
-                repeating-linear-gradient(0deg, #000 0, #000 10%, transparent 10%, transparent 20%),
-                repeating-linear-gradient(90deg, #000 0, #000 10%, transparent 10%, transparent 20%);
-            background-size: 20% 20%;
-            border: 8px solid #000;
-        }
-        .qr-center {
-            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            width: 40px; height: 40px; background: white; border: 4px solid #000;
-        }
-        .qr-center-inner { width: 20px; height: 20px; background: #000; margin: 6px auto; }
-        .barcode-wrapper {
-            background: white; border-radius: 8px; padding: 8px 12px; margin-top: 8px;
+            border-radius: 50%;
+            min-width: 18px;
+            height: 18px;
+            font-size: 10px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 4px;
         }
 
-        /* Mission Drawer */
-        .mission-drawer-overlay {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.4);
-            z-index: 200;
+        .quick-action-label {
+            font-size: 11px;
+            text-align: center;
+            color: #333;
+            line-height: 1.3;
         }
-        .mission-drawer-overlay.show { display: block; }
-        .mission-drawer {
-            position: fixed;
-            top: 0; right: 0;
-            width: 85%; max-width: 320px;
-            height: 100%;
-            background: white;
-            box-shadow: -4px 0 20px rgba(0,0,0,0.15);
-            z-index: 210;
-            transform: translateX(100%);
-            transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1);
-            display: flex; flex-direction: column;
-            overflow: hidden;
+
+        .store-bar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            font-size: 13px;
+            color: #666;
         }
-        .mission-drawer.open { transform: translateX(0); }
-        .mission-drawer-header {
+
+        .store-left {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .store-address {
+            flex: 1;
+            font-size: 12px;
+            color: #999;
+        }
+
+        .store-distance {
+            margin-left: 4px;
+        }
+
+        .store-action {
+            font-size: 16px;
+            color: #999;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 0 16px 12px;
+            padding: 10px 12px;
+            background: #f5f5f5;
+            border-radius: 10px;
+            font-size: 14px;
+            color: #999;
+            cursor: pointer;
+        }
+
+        .search-icon {
+            font-size: 16px;
+        }
+
+        .search-text {
+            flex: 1;
+        }
+
+        .search-scan {
+            font-size: 18px;
+        }
+
+        .main-banner {
+            background: #f0f0f0;
+            margin: 0 16px 12px;
+            border-radius: 16px;
             padding: 16px;
-            border-bottom: 1px solid #e0e0e0;
-            display: flex; align-items: center; justify-content: space-between;
-            background: #f8f8f8; flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            min-height: 140px;
         }
-        .mission-drawer-title { font-size: 16px; font-weight: 700; color: #000; }
-        .mission-drawer-close {
-            background: none; border: none; font-size: 20px; cursor: pointer;
-            color: #999; width: 32px; height: 32px;
-            display: flex; align-items: center; justify-content: center;
-            border-radius: 50%; transition: background 0.2s;
+
+        .main-banner-text {
+            flex: 1;
+            z-index: 2;
         }
-        .mission-drawer-close:active { background: #f0f0f0; }
-        .mission-drawer-body { flex: 1; overflow-y: auto; padding: 16px; }
-        .mission-drawer-trigger {
-            position: fixed; right: 0; top: 50%; transform: translateY(-50%);
-            background: linear-gradient(135deg, #FF6B00 0%, #FF8A38 100%);
-            color: white; border: none; border-radius: 12px 0 0 12px;
-            padding: 12px 8px; font-size: 12px; font-weight: 700; cursor: pointer;
-            z-index: 150; box-shadow: -2px 0 8px rgba(255, 107, 0, 0.3);
-            writing-mode: vertical-rl; text-orientation: mixed; letter-spacing: 1px;
-            transition: all 0.2s ease;
+
+        .main-banner-title {
+            font-size: 16px;
+            font-weight: 800;
+            color: #FF6B00;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            line-height: 1.2;
         }
-        .mission-drawer-trigger:active { padding-right: 12px; }
-        .mission-drawer-trigger .trigger-badge {
-            display: inline-block; background: white; color: #FF6B00;
-            border-radius: 50%; width: 18px; height: 18px;
-            font-size: 10px; line-height: 18px; text-align: center;
-            margin-bottom: 4px; font-weight: 800;
+
+        .main-banner-btn {
+            background: #4A148C;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
         }
-        .mission-floating-btn {
-            position: fixed; bottom: 80px; right: 12px;
-            width: 56px; height: 56px; border-radius: 50%;
-            background: linear-gradient(135deg, #FF6B00 0%, #FF8A38 100%);
-            color: white; border: none;
-            box-shadow: 0 4px 12px rgba(255, 107, 0, 0.3);
-            font-size: 22px; cursor: pointer; z-index: 150;
-            display: flex; align-items: center; justify-content: center;
-            transition: transform 0.2s ease;
+
+        .main-banner-fruit {
+            font-size: 64px;
+            position: absolute;
+            left: -10px;
+            bottom: -10px;
+            opacity: 0.3;
+            z-index: 1;
         }
-        .mission-floating-btn:active { transform: scale(0.92); }
-        .mission-floating-badge {
-            position: absolute; top: -2px; right: -2px;
-            background: #FF3B30; color: white; border-radius: 50%;
-            min-width: 18px; height: 18px; font-size: 10px; font-weight: 700;
-            display: flex; align-items: center; justify-content: center; padding: 0 4px;
+
+        .main-banner-veg {
+            font-size: 64px;
+            position: absolute;
+            right: -10px;
+            bottom: -10px;
+            opacity: 0.3;
+            z-index: 1;
         }
-        .drawer-mission-card {
-            background: linear-gradient(135deg, #FF6B00 0%, #FF8A38 100%);
-            border-radius: 16px; padding: 20px; color: white; margin-bottom: 16px;
+
+        .mini-game-banner {
+            margin: 0 16px 16px;
+            background: linear-gradient(135deg, #7B1FA2, #4A148C);
+            border-radius: 16px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: white;
+            cursor: pointer;
         }
-        .drawer-mission-title { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
-        .drawer-mission-desc { font-size: 13px; opacity: 0.95; margin-bottom: 16px; line-height: 1.4; }
-        .drawer-mission-timer {
-            font-size: 28px; font-weight: 700; font-family: 'Courier New', monospace;
-            margin: 12px 0; text-align: center;
+
+        .mini-game-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
-        .drawer-progress-bar { width: 100%; height: 8px;
-            background: rgba(255, 255, 255, 0.3); border-radius: 4px; overflow: hidden;
+
+        .mini-game-emoji {
+            font-size: 40px;
         }
-        .drawer-progress-fill { height: 100%; background: white; transition: width 0.3s ease; }
-        .drawer-progress-label {
-            display: flex; justify-content: space-between;
-            font-size: 12px; margin-top: 8px; opacity: 0.9;
+
+        .mini-game-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
         }
-        .drawer-stats-grid {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px;
+
+        .mini-game-title {
+            font-size: 18px;
+            font-weight: 800;
         }
-        .drawer-stat-box {
-            background: rgba(255, 255, 255, 0.15); border-radius: 8px; padding: 10px; text-align: center;
+
+        .mini-game-sub {
+            font-size: 12px;
+            opacity: 0.9;
         }
-        .drawer-stat-label { font-size: 10px; opacity: 0.85; margin-bottom: 4px; }
-        .drawer-stat-value { font-size: 16px; font-weight: 700; }
-        .drawer-actions { margin-top: 20px; display: flex; flex-direction: column; gap: 10px; }
-        .drawer-btn {
-            background: #FF6B00; color: white; border: none; border-radius: 12px;
-            padding: 14px; font-size: 14px; font-weight: 700; cursor: pointer;
-            text-align: center; transition: background 0.2s;
-        }
-        .drawer-btn.secondary { background: #f0f0f0; color: #333; }
-        .drawer-btn:active { opacity: 0.9; }
-        .drawer-hint {
-            font-size: 12px; color: #999; text-align: center; margin-top: 12px; line-height: 1.4;
+
+        .mini-game-arrow {
+            font-size: 24px;
+            font-weight: 700;
         }
 
         /* Home Screen Extra Sections */
@@ -1342,93 +1333,191 @@
             color: #333;
         }
 
-        .brands-row {
+        /* Popular Brands Grid */
+        .brands-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            padding: 0 16px 16px;
+        }
+
+        .brand-card {
+            height: 100px;
+            border-radius: 16px;
             display: flex;
-            gap: 8px;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 14px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .brand-card:active {
+            transform: scale(0.97);
+        }
+
+        .brand-card-name {
+            line-height: 1.3;
+        }
+
+        /* Stories Scroll */
+        .stories-scroll {
+            display: flex;
+            gap: 12px;
             overflow-x: auto;
             padding: 0 16px 16px;
             scrollbar-width: none;
         }
 
-        .brands-row::-webkit-scrollbar { display: none; }
+        .stories-scroll::-webkit-scrollbar {
+            display: none;
+        }
 
-        .brand-chip {
-            flex-shrink: 0;
-            min-width: 80px;
-            height: 48px;
-            border-radius: 8px;
+        .story-card {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            font-size: 11px;
-            font-weight: 700;
-            padding: 0 12px;
-            letter-spacing: 0.5px;
+            gap: 6px;
+            flex-shrink: 0;
+            cursor: pointer;
         }
 
-        .promo-banners-row {
-            display: flex;
-            gap: 8px;
-            padding: 0 16px 16px;
-        }
-
-        .promo-banner-small {
-            flex: 1;
-            height: 56px;
+        .story-img {
+            width: 72px;
+            height: 96px;
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-weight: 700;
-            font-size: 12px;
+            font-size: 32px;
+            position: relative;
         }
 
-        .promo-banner-logo {
-            text-align: center;
-            line-height: 1.2;
+        .story-label {
+            font-size: 11px;
+            font-weight: 500;
+            color: #333;
         }
 
-        .big-promo-banner {
-            margin: 0 16px 16px;
-            background: #1a1a1a;
+        /* Big Promo Carousel */
+        .promo-carousel {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            padding: 0 16px 16px;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+        }
+
+        .promo-carousel::-webkit-scrollbar {
+            display: none;
+        }
+
+        .promo-carousel-card {
+            flex: 0 0 85%;
+            min-width: 280px;
             border-radius: 16px;
-            padding: 16px;
+            padding: 20px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             color: white;
+            scroll-snap-align: center;
             cursor: pointer;
-            position: relative;
-            overflow: hidden;
+            transition: transform 0.2s ease;
         }
 
-        .big-promo-left {
-            z-index: 2;
+        .promo-carousel-card:active {
+            transform: scale(0.97);
         }
 
-        .big-promo-tag {
-            font-size: 12px;
-            font-weight: 600;
-            color: #FF6B00;
-            margin-bottom: 4px;
+        .promo-carousel-text {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
         }
 
-        .big-promo-title {
-            font-size: 24px;
+        .promo-carousel-title {
+            font-size: 20px;
             font-weight: 800;
-            margin-bottom: 4px;
         }
 
-        .big-promo-sub {
-            font-size: 11px;
+        .promo-carousel-desc {
+            font-size: 13px;
             opacity: 0.9;
-            max-width: 200px;
         }
 
-        .big-promo-emoji {
+        .promo-carousel-emoji {
             font-size: 48px;
-            z-index: 2;
+        }
+
+        /* QR & Barcode in Profile */
+        .loyalty-card-section {
+            background: linear-gradient(135deg, #FF6B00 0%, #FF8A38 100%);
+            border-radius: 16px;
+            padding: 20px;
+            color: white;
+            text-align: center;
+        }
+
+        .loyalty-card-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            opacity: 0.95;
+        }
+
+        .qr-wrapper {
+            background: white;
+            border-radius: 12px;
+            padding: 12px;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+        .qr-code {
+            width: 120px;
+            height: 120px;
+            background: white;
+            position: relative;
+        }
+
+        .qr-pattern {
+            width: 100%;
+            height: 100%;
+            background-image:
+                repeating-linear-gradient(0deg, #000 0, #000 10%, transparent 10%, transparent 20%),
+                repeating-linear-gradient(90deg, #000 0, #000 10%, transparent 10%, transparent 20%);
+            background-size: 20% 20%;
+            border: 8px solid #000;
+        }
+
+        .qr-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            background: white;
+            border: 4px solid #000;
+        }
+
+        .qr-center-inner {
+            width: 20px;
+            height: 20px;
+            background: #000;
+            margin: 6px auto;
+        }
+
+        .barcode-wrapper {
+            background: white;
+            border-radius: 8px;
+            padding: 8px 12px;
+            margin-top: 8px;
         }
 
         .catalog-preview-grid {
@@ -1463,4 +1552,272 @@
             color: #000;
             text-align: center;
             line-height: 1.3;
+        }
+
+        /* Mission Drawer */
+        .mission-drawer-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 200;
+        }
+
+        .mission-drawer-overlay.show {
+            display: block;
+        }
+
+        .mission-drawer {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 85%;
+            max-width: 320px;
+            height: 100%;
+            background: white;
+            box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
+            z-index: 210;
+            transform: translateX(100%);
+            transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .mission-drawer.open {
+            transform: translateX(0);
+        }
+
+        .mission-drawer-header {
+            padding: 16px;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #f8f8f8;
+            flex-shrink: 0;
+        }
+
+        .mission-drawer-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #000;
+        }
+
+        .mission-drawer-close {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: #999;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.2s;
+        }
+
+        .mission-drawer-close:active {
+            background: #f0f0f0;
+        }
+
+        .mission-drawer-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 16px;
+        }
+
+        .mission-drawer-trigger {
+            position: fixed;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(135deg, #FF6B00 0%, #FF8A38 100%);
+            color: white;
+            border: none;
+            border-radius: 12px 0 0 12px;
+            padding: 12px 8px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            z-index: 150;
+            box-shadow: -2px 0 8px rgba(255, 107, 0, 0.3);
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            letter-spacing: 1px;
+            transition: all 0.2s ease;
+        }
+
+        .mission-drawer-trigger:active {
+            padding-right: 12px;
+        }
+
+        .mission-drawer-trigger .trigger-badge {
+            display: inline-block;
+            background: white;
+            color: #FF6B00;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 10px;
+            line-height: 18px;
+            text-align: center;
+            margin-bottom: 4px;
+            font-weight: 800;
+        }
+
+        .mission-floating-btn {
+            position: fixed;
+            bottom: 80px;
+            right: 12px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #FF6B00 0%, #FF8A38 100%);
+            color: white;
+            border: none;
+            box-shadow: 0 4px 12px rgba(255, 107, 0, 0.3);
+            font-size: 22px;
+            cursor: pointer;
+            z-index: 150;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease;
+        }
+
+        .mission-floating-btn:active {
+            transform: scale(0.92);
+        }
+
+        .mission-floating-badge {
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            background: #FF3B30;
+            color: white;
+            border-radius: 50%;
+            min-width: 18px;
+            height: 18px;
+            font-size: 10px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 4px;
+        }
+
+        .drawer-mission-card {
+            background: linear-gradient(135deg, #FF6B00 0%, #FF8A38 100%);
+            border-radius: 16px;
+            padding: 20px;
+            color: white;
+            margin-bottom: 16px;
+        }
+
+        .drawer-mission-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .drawer-mission-desc {
+            font-size: 13px;
+            opacity: 0.95;
+            margin-bottom: 16px;
+            line-height: 1.4;
+        }
+
+        .drawer-mission-timer {
+            font-size: 28px;
+            font-weight: 700;
+            font-family: 'Courier New', monospace;
+            margin: 12px 0;
+            text-align: center;
+        }
+
+        .drawer-progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .drawer-progress-fill {
+            height: 100%;
+            background: white;
+            transition: width 0.3s ease;
+        }
+
+        .drawer-progress-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            margin-top: 8px;
+            opacity: 0.9;
+        }
+
+        .drawer-stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        .drawer-stat-box {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .drawer-stat-label {
+            font-size: 10px;
+            opacity: 0.85;
+            margin-bottom: 4px;
+        }
+
+        .drawer-stat-value {
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .drawer-actions {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .drawer-btn {
+            background: #FF6B00;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 14px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            text-align: center;
+            transition: background 0.2s;
+        }
+
+        .drawer-btn.secondary {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .drawer-btn:active {
+            opacity: 0.9;
+        }
+
+        .drawer-hint {
+            font-size: 12px;
+            color: #999;
+            text-align: center;
+            margin-top: 12px;
+            line-height: 1.4;
         }

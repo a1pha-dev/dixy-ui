@@ -29,55 +29,59 @@
                     </div>
                 </div>
 
-                <!-- Quick Icons -->
-                <div class="quick-icons-scroll">
-                    <div class="quick-icon-item" onclick="trackClick('home->catalog'); switchToScreen('catalog-screen')">
-                        <div class="quick-icon-circle">
-                            <div class="quick-icon-emoji">🎁</div>
-                            <div class="quick-icon-badge">7</div>
+                <!-- Quick Actions Grid (2 rows x 4 cols) -->
+                <div class="quick-actions-grid">
+                    <div class="quick-action-item" onclick="trackClick('home->catalog'); switchToScreen('catalog-screen')">
+                        <div class="quick-action-circle">
+                            <span class="quick-action-emoji">🎁</span>
+                            <span class="quick-action-badge">7</span>
                         </div>
-                        <div class="quick-icon-label">Товары по<br>карте</div>
+                        <span class="quick-action-label">Товары по<br>карте</span>
                     </div>
-                    <div class="quick-icon-item" onclick="trackClick('home->profile'); switchToScreen('profile-screen')">
-                        <div class="quick-icon-circle">
-                            <div class="quick-icon-emoji">📝</div>
+                    <div class="quick-action-item" onclick="trackClick('home->profile'); switchToScreen('profile-screen')">
+                        <div class="quick-action-circle">
+                            <span class="quick-action-emoji">📝</span>
                         </div>
-                        <div class="quick-icon-label">Мои покупки</div>
+                        <span class="quick-action-label">Мои<br>покупки</span>
                     </div>
-                    <div class="quick-icon-item">
-                        <div class="quick-icon-circle">
-                            <div class="quick-icon-emoji">🎟️</div>
-                            <div class="quick-icon-badge">2</div>
+                    <div class="quick-action-item">
+                        <div class="quick-action-circle">
+                            <span class="quick-action-emoji">🎟️</span>
+                            <span class="quick-action-badge">2</span>
                         </div>
-                        <div class="quick-icon-label">Купоны</div>
+                        <span class="quick-action-label">Купоны</span>
                     </div>
-                    <div class="quick-icon-item">
-                        <div class="quick-icon-circle">
-                            <div class="quick-icon-emoji">🏷️</div>
-                            <div class="quick-icon-badge">1</div>
+                    <div class="quick-action-item">
+                        <div class="quick-action-circle">
+                            <span class="quick-action-emoji">🏷️</span>
+                            <span class="quick-action-badge">1</span>
                         </div>
-                        <div class="quick-icon-label">Наклейки</div>
+                        <span class="quick-action-label">Наклейки</span>
                     </div>
-                    <div class="quick-icon-item" onclick="trackClick('home->catalog'); switchToScreen('catalog-screen')">
-                        <div class="quick-icon-circle">
-                            <div class="quick-icon-emoji">❤️</div>
-                            <div class="quick-icon-badge">0</div>
+                    <div class="quick-action-item" onclick="trackClick('home->catalog'); switchToScreen('catalog-screen')">
+                        <div class="quick-action-circle">
+                            <span class="quick-action-emoji">❤️</span>
+                            <span class="quick-action-badge">0</span>
                         </div>
-                        <div class="quick-icon-label">Любимые<br>товары</div>
+                        <span class="quick-action-label">Любимые<br>товары</span>
                     </div>
-                    <div class="quick-icon-item" onclick="trackClick('home->catalog'); switchToScreen('catalog-screen')">
-                        <div class="quick-icon-circle">
-                            <div class="quick-icon-emoji">⭐</div>
-                            <div class="quick-icon-badge">0</div>
+                    <div class="quick-action-item" onclick="trackClick('home->catalog'); switchToScreen('catalog-screen')">
+                        <div class="quick-action-circle">
+                            <span class="quick-action-emoji">⭐</span>
+                            <span class="quick-action-badge">0</span>
                         </div>
-                        <div class="quick-icon-label">Любимые<br>категории</div>
+                        <span class="quick-action-label">Любимые<br>категории</span>
                     </div>
-                    <div class="quick-icon-item" onclick="trackClick('home->promo'); switchToScreen('promo-screen')">
-                        <div class="quick-icon-circle">
-                            <div class="quick-icon-emoji">🎫</div>
-                            <div class="quick-icon-badge">0/3</div>
+                    <div class="quick-action-item" onclick="trackClick('home->promo'); switchToScreen('promo-screen')">
+                        <div class="quick-action-circle">
+                            <span class="quick-action-emoji">🎫</span>
+                            <span class="quick-action-badge">0/3</span>
                         </div>
-                        <div class="quick-icon-label">Промокоды</div>
+                        <span class="quick-action-label">Промокоды</span>
+                    </div>
+                    <div class="quick-action-item" style="visibility:hidden;">
+                        <div class="quick-action-circle"></div>
+                        <span class="quick-action-label"></span>
                     </div>
                 </div>
 
@@ -99,7 +103,7 @@
                     <span class="search-scan">📷</span>
                 </div>
 
-                <!-- Main Banner -->
+                <!-- Two Banners -->
                 <div class="main-banner" onclick="trackClick('home->catalog'); switchToScreen('catalog-screen')">
                     <div class="main-banner-text">
                         <div class="main-banner-title">ШИРОКИЙ АССОРТИМЕНТ<br>И ВЫГОДНЫЕ ЦЕНЫ!</div>
@@ -109,67 +113,89 @@
                     <div class="main-banner-veg">🥦</div>
                 </div>
 
-                <!-- Mini Product Scroll -->
-                <div class="mini-products-scroll">
-                    <div class="mini-product" onclick="addToCart(1, 'Яблоки Гала', 89)">
-                        <div class="mini-product-emoji">🍎</div>
-                        <div class="mini-product-price">89₽</div>
+                <div class="mini-game-banner" onclick="trackClick('home->promo'); switchToScreen('promo-screen')">
+                    <div class="mini-game-left">
+                        <div class="mini-game-emoji">🎮</div>
+                        <div class="mini-game-text">
+                            <div class="mini-game-title">Мини-игра</div>
+                            <div class="mini-game-sub">Играй и выигрывай призы!</div>
+                        </div>
                     </div>
-                    <div class="mini-product" onclick="addToCart(2, 'Банан', 79)">
-                        <div class="mini-product-emoji">🍌</div>
-                        <div class="mini-product-price">79₽</div>
-                    </div>
-                    <div class="mini-product" onclick="addToCart(3, 'Апельсины', 84)">
-                        <div class="mini-product-emoji">🍊</div>
-                        <div class="mini-product-price">84₽</div>
-                    </div>
-                    <div class="mini-product" onclick="addToCart(4, 'Помидоры', 99)">
-                        <div class="mini-product-emoji">🍅</div>
-                        <div class="mini-product-price">99₽</div>
-                    </div>
-                    <div class="mini-product" onclick="addToCart(5, 'Огурцы', 69)">
-                        <div class="mini-product-emoji">🥒</div>
-                        <div class="mini-product-price">69₽</div>
-                    </div>
-                    <div class="mini-product" onclick="addToCart(6, 'Морковь', 45)">
-                        <div class="mini-product-emoji">🥕</div>
-                        <div class="mini-product-price">45₽</div>
-                    </div>
+                    <div class="mini-game-arrow">›</div>
                 </div>
 
                 <!-- Popular Brands -->
                 <div class="home-section-title">Популярные бренды <span class="section-arrow">→</span></div>
-                <div class="brands-row">
-                    <div class="brand-chip" style="background:#E31E24; color:white;">НЕСКАФЕ</div>
-                    <div class="brand-chip" style="background:#00A0E3; color:white;">Чистая Линия</div>
-                    <div class="brand-chip" style="background:#E31E24; color:white;">БАЛТИКА</div>
-                    <div class="brand-chip" style="background:#FF6B00; color:white;">Больше!</div>
-                </div>
-
-                <!-- Promo Banners Row -->
-                <div class="promo-banners-row">
-                    <div class="promo-banner-small" style="background:#7CB342;">
-                        <div class="promo-banner-logo">Олейна</div>
+                <div class="brands-grid">
+                    <div class="brand-card" style="background: linear-gradient(135deg, #E31E24, #b71c1c);">
+                        <span class="brand-card-name">НЕСКАФЕ</span>
                     </div>
-                    <div class="promo-banner-small" style="background:#2E7D32;">
-                        <div class="promo-banner-logo">TAKE IT</div>
+                    <div class="brand-card" style="background: linear-gradient(135deg, #00A0E3, #0277bd);">
+                        <span class="brand-card-name">Чистая<br>Линия</span>
                     </div>
-                    <div class="promo-banner-small" style="background:#C62828;">
-                        <div class="promo-banner-logo">Мама мыла раму</div>
+                    <div class="brand-card" style="background: linear-gradient(135deg, #E31E24, #c62828);">
+                        <span class="brand-card-name">БАЛТИКА</span>
+                    </div>
+                    <div class="brand-card" style="background: linear-gradient(135deg, #FF6B00, #e65100);">
+                        <span class="brand-card-name">Больше!</span>
                     </div>
                 </div>
 
-                <!-- Big Promo -->
-                <div class="big-promo-banner" onclick="trackClick('home->promo'); switchToScreen('promo-screen')">
-                    <div class="big-promo-left">
-                        <div class="big-promo-tag">Дикси х Брат</div>
-                        <div class="big-promo-title">РОЗЫГРЫШ</div>
-                        <div class="big-promo-sub">Выиграй уникальный мерч Дикси х Брат</div>
+                <!-- Stories Promos -->
+                <div class="home-section-title">Акции <span class="section-arrow">→</span></div>
+                <div class="stories-scroll">
+                    <div class="story-card">
+                        <div class="story-img" style="background: linear-gradient(180deg, #FF6B00, #FF8A38);">🎁</div>
+                        <span class="story-label">Новинки</span>
                     </div>
-                    <div class="big-promo-emoji">🎁</div>
+                    <div class="story-card">
+                        <div class="story-img" style="background: linear-gradient(180deg, #7CB342, #558B2F);">🥗</div>
+                        <span class="story-label">Овощи</span>
+                    </div>
+                    <div class="story-card">
+                        <div class="story-img" style="background: linear-gradient(180deg, #E31E24, #b71c1c);">🥤</div>
+                        <span class="story-label">Напитки</span>
+                    </div>
+                    <div class="story-card">
+                        <div class="story-img" style="background: linear-gradient(180deg, #00A0E3, #0277bd);">🥛</div>
+                        <span class="story-label">Молоко</span>
+                    </div>
+                    <div class="story-card">
+                        <div class="story-img" style="background: linear-gradient(180deg, #FF6B00, #e65100);">🍞</div>
+                        <span class="story-label">Выпечка</span>
+                    </div>
+                    <div class="story-card">
+                        <div class="story-img" style="background: linear-gradient(180deg, #7B1FA2, #4A148C);">🍬</div>
+                        <span class="story-label">Сладкое</span>
+                    </div>
                 </div>
 
-                <!-- Catalog Preview -->
+                <!-- Big Promo Carousel -->
+                <div class="promo-carousel">
+                    <div class="promo-carousel-card" style="background: linear-gradient(135deg, #FF6B00, #FF8A38);">
+                        <div class="promo-carousel-text">
+                            <div class="promo-carousel-title">Скидки до 30%</div>
+                            <div class="promo-carousel-desc">На фрукты и овощи</div>
+                        </div>
+                        <div class="promo-carousel-emoji">🍎</div>
+                    </div>
+                    <div class="promo-carousel-card" style="background: linear-gradient(135deg, #7B1FA2, #4A148C);">
+                        <div class="promo-carousel-text">
+                            <div class="promo-carousel-title">1+1=3</div>
+                            <div class="promo-carousel-desc">На все молочные продукты</div>
+                        </div>
+                        <div class="promo-carousel-emoji">🥛</div>
+                    </div>
+                    <div class="promo-carousel-card" style="background: linear-gradient(135deg, #00A0E3, #0277bd);">
+                        <div class="promo-carousel-text">
+                            <div class="promo-carousel-title">Новый бренд</div>
+                            <div class="promo-carousel-desc">Попробуй со скидкой 20%</div>
+                        </div>
+                        <div class="promo-carousel-emoji">🎉</div>
+                    </div>
+                </div>
+
+                <!-- Catalog -->
                 <div class="home-section-title">Каталог <span class="section-arrow">→</span></div>
                 <div class="catalog-preview-grid">
                     <div class="catalog-preview-item" onclick="trackClick('home->catalog'); switchToScreen('catalog-screen')">
