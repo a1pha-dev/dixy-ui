@@ -1128,7 +1128,7 @@
         .quick-action-circle {
             width: 56px;
             height: 56px;
-            border-radius: 50%;
+            border-radius: 12px;
             background: #FFF5ED;
             display: flex;
             align-items: center;
@@ -1336,27 +1336,28 @@
         /* Popular Brands Grid */
         .brands-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 1fr);
             gap: 12px;
             padding: 0 16px 16px;
         }
 
         .brand-card {
-            height: 100px;
-            border-radius: 16px;
+            aspect-ratio: 1 / 1;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             font-weight: 700;
-            font-size: 14px;
+            font-size: 11px;
             text-align: center;
             cursor: pointer;
             transition: transform 0.2s ease;
         }
 
         .brand-card:active {
-            transform: scale(0.97);
+            transform: scale(0.95);
         }
 
         .brand-card-name {
