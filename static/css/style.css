@@ -568,7 +568,6 @@
             cursor: pointer;
             flex: 1;
             height: 100%;
-            font-size: 24px;
             color: #999;
             transition: color 0.2s;
             position: relative;
@@ -576,6 +575,11 @@
 
         .nav-item.active {
             color: #FF6B00;
+        }
+
+        .nav-icon {
+            width: 24px;
+            height: 24px;
         }
 
         .nav-label {
@@ -644,6 +648,11 @@
         .floating-cart-label {
             font-size: 14px;
             font-weight: 700;
+        }
+
+        .cart-icon {
+            width: 20px;
+            height: 20px;
         }
 
         .floating-cart-btn.hidden {
