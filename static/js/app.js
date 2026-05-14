@@ -174,6 +174,7 @@
             state.products = data.products;
             renderProducts();
             renderSummerProducts();
+            renderPopularProductsHome();
         }
 
         function renderProducts() {
@@ -214,6 +215,39 @@
                     </button>
                 </div>
             `).join('');
+        }
+
+        function renderPopularProductsHome() {
+            const grid = document.getElementById('popular-products-home');
+            if (!grid) return;
+            const popular = state.products.slice(0, 6);
+            grid.innerHTML = popular.map(prod => `
+                <div class="product-card-home">
+                    ${prod.discount ? `<div class="product-home-discount">${prod.discount}</div>` : ''}
+                    <div class="product-home-img">${prod.emoji}</div>
+                    <div class="product-home-name">${prod.name}</div>
+                    <div class="product-home-bottom">
+                        <div class="product-home-price">
+                            ${prod.old_price ? `<span class="product-home-old-price">${prod.old_price}₽</span>` : ''}
+                            ${prod.price}₽
+                        </div>
+                        <button class="product-home-add" onclick="addToCart(${prod.id}, '${prod.name}', ${prod.price}); showToast('${prod.name} добавлен');">+</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function showToast(message) {
+            let toast = document.getElementById('toast');
+            if (!toast) {
+                toast = document.createElement('div');
+                toast.id = 'toast';
+                toast.className = 'toast';
+                document.body.appendChild(toast);
+            }
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2000);
         }
 
         async function loadPromotions() {
