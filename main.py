@@ -67,11 +67,33 @@ async def health():
 
 @app.post("/api/click-log")
 async def log_click(data: dict):
-    """Log user click interaction"""
+    """Log user click interaction with A/B analytics"""
+    # Extract known fields
+    from_screen = data.get("from")
+    to_screen = data.get("to")
+    timestamp = data.get("timestamp")
+    ab_group = data.get("ab_group")
+    session_id = data.get("session_id")
+    time_on_screen_ms = data.get("time_on_screen_ms")
+    cart_value = data.get("cart_value")
+    cart_count = data.get("cart_count")
+
+    # Pass everything else as extra
+    extra = {k: v for k, v in data.items() if k not in {
+        "from", "to", "timestamp", "ab_group", "session_id",
+        "time_on_screen_ms", "cart_value", "cart_count"
+    }}
+
     click_data = click_tracker.log_click(
-        data.get("from"),
-        data.get("to"),
-        data.get("timestamp")
+        from_screen=from_screen,
+        to_screen=to_screen,
+        timestamp=timestamp,
+        ab_group=ab_group,
+        session_id=session_id,
+        time_on_screen_ms=time_on_screen_ms,
+        cart_value=cart_value,
+        cart_count=cart_count,
+        extra=extra if extra else None,
     )
     return click_data
 

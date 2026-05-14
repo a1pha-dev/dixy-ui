@@ -29,6 +29,7 @@
             promotions: () => STATIC ? Promise.resolve({promotions: STATIC.promotions}) : fetch('/api/promotions').then(r => r.json()),
             profile: () => STATIC ? Promise.resolve({user: STATIC.profile}) : fetch('/api/profile').then(r => r.json()),
             mission: () => {
+                const group = state.abGroup || 'A';
                 if (STATIC) {
                     // Static deployment: generate a random mission locally
                     const types = ['screen', 'add_item', 'checkout', 'combo'];
@@ -37,7 +38,8 @@
                         {id: 'catalog-screen', name: 'Каталог'},
                         {id: 'promo-screen', name: 'Акции'},
                         {id: 'profile-screen', name: 'Профиль'},
-                        {id: 'summer-screen', name: 'Скоро лето'},
+                        // Conversion UI (B) has no summer tab
+                        ...(group === 'A' ? [{id: 'summer-screen', name: 'Скоро лето'}] : []),
                     ];
                     let mission = {
                         id: 'm-' + Date.now(),
@@ -65,7 +67,7 @@
                     }
                     return Promise.resolve(mission);
                 }
-                return fetch('/api/mission/new').then(r => r.json());
+                return fetch(`/api/mission/new?ab_group=${group}`).then(r => r.json());
             },
             completeMission: (id, stats) => {
                 if (STATIC) {

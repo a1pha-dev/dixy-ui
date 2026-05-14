@@ -12,8 +12,11 @@ class ClickTracker:
     """Track and store user clicks"""
 
     @staticmethod
-    def log_click(from_screen: str, to_screen: str, timestamp: str = None) -> Dict[str, Any]:
-        """Log a click from one screen to another"""
+    def log_click(from_screen: str, to_screen: str, timestamp: str = None,
+                  ab_group: str = None, session_id: str = None,
+                  time_on_screen_ms: int = None, cart_value: float = None,
+                  cart_count: int = None, extra: Dict[str, Any] = None) -> Dict[str, Any]:
+        """Log a click from one screen to another with detailed A/B analytics"""
         if not timestamp:
             timestamp = datetime.now().isoformat()
 
@@ -22,7 +25,19 @@ class ClickTracker:
             "to": to_screen,
             "timestamp": timestamp,
             "path": f"{from_screen} -> {to_screen}",
+            "ab_group": ab_group,
+            "session_id": session_id,
+            "time_on_screen_ms": time_on_screen_ms,
+            "cart_value": cart_value,
+            "cart_count": cart_count,
         }
+
+        # Merge any extra fields (backward compatibility)
+        if extra:
+            click_data.update(extra)
+
+        # Remove None values to keep log clean
+        click_data = {k: v for k, v in click_data.items() if v is not None}
 
         # Save to file
         try:
