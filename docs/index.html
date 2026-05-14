@@ -1,4 +1,16 @@
-<!-- Home Screen -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dixy UI - A/B Testing</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <div class="phone-frame">
+        <!-- Main Screen Container -->
+        <div class="phone-screen" id="screen-container">
+            <!-- Home Screen -->
             <div class="screen active" id="home-screen">
                 <!-- ===================== UI VARIANT A (Original/Reference) ===================== -->
                 <div class="home-ui-a">
@@ -307,3 +319,321 @@
             </div>
 
             <!-- Mission/Quest Screen -->
+            <!-- Mission/Quest Screen -->
+            <div class="screen mission-screen" id="mission-screen">
+                <div class="header">
+                    <div class="header-title">🎮 Текущее Задание</div>
+                </div>
+                <div class="content">
+                    <div class="mission-card" id="mission-card">
+                        <div class="mission-title" id="mission-title">Загрузка...</div>
+                        <div class="mission-description" id="mission-description">Пожалуйста подождите...</div>
+                        <div class="mission-timer" id="mission-timer">0:00</div>
+                        <div class="mission-progress">
+                            <div class="progress-label">Прогресс выполнения</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <div class="progress-percent"><span id="progress-percent">0</span>%</div>
+                        </div>
+                        <div class="stats-grid">
+                            <div class="stat-box">
+                                <div class="stat-label">Кликов</div>
+                                <div class="stat-value" id="stat-clicks">0</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-label">Лишних кликов</div>
+                                <div class="stat-value" id="stat-unnecessary">0</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Catalog Screen -->
+
+            <!-- Catalog Screen -->
+            <div class="screen" id="catalog-screen">
+                <div class="header">
+                    <div class="header-title">📋 Каталог</div>
+                </div>
+                <div class="content">
+                    <div class="category-grid" id="category-grid">
+                        <div class="loading"><div class="spinner"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Products Screen -->
+
+            <!-- Products Screen -->
+            <div class="screen" id="products-screen">
+                <div class="header">
+                    <div class="header-title">🛍️ Товары</div>
+                </div>
+                <div class="content">
+                    <div class="product-grid" id="product-grid">
+                        <div class="loading"><div class="spinner"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Promotions Screen -->
+
+            <!-- Promotions Screen -->
+            <div class="screen" id="promo-screen">
+                <div class="header">
+                    <div class="header-title">🎁 Акции</div>
+                </div>
+                <div class="content">
+                    <div id="promo-list">
+                        <div class="loading"><div class="spinner"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Summer Screen -->
+
+            <!-- Summer Screen -->
+            <div class="screen" id="summer-screen">
+                <div class="header">
+                    <div class="header-title">☀️ Скоро Лето</div>
+                </div>
+                <div class="content">
+                    <div class="banner">
+                        <div class="banner-title">Сезонные предложения на фрукты и овощи!</div>
+                        <button class="banner-cta" onclick="switchToProducts()">За покупками!</button>
+                    </div>
+                    <div class="section-title">Лучшие фрукты</div>
+                    <div class="product-grid" id="summer-fruits">
+                        <div class="loading"><div class="spinner"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cart Screen -->
+
+            <!-- Cart Screen -->
+            <div class="screen" id="cart-screen">
+                <div class="header">
+                    <div class="header-title">🛒 Корзина</div>
+                </div>
+                <div class="content">
+                    <div id="cart-content">
+                        <div class="empty-state">
+                            <div class="empty-emoji">🛒</div>
+                            <div class="empty-text">Ваша корзина пуста</div>
+                            <div class="empty-subtext">Добавьте товары из каталога</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Screen -->
+
+            <!-- Profile Screen -->
+            <div class="screen" id="profile-screen">
+                <!-- Profile Header (custom, no standard header) -->
+                <div class="profile-top-bar">
+                    <div class="profile-store-address">
+                        <span class="store-icon">🏪</span>
+                        <span class="store-text">г Видное, пгт. Бутово, тер Жилой комплекс Б...</span>
+                        <span class="store-chevron">›</span>
+                    </div>
+                    <div class="profile-header-row">
+                        <div class="profile-user-info">
+                            <div class="profile-avatar-img">🍏</div>
+                            <div class="profile-user-text">
+                                <div class="profile-name">Виталий</div>
+                                <div class="profile-subtitle">Личные данные ›</div>
+                            </div>
+                        </div>
+                        <div class="profile-header-actions">
+                            <div class="profile-action-btn">
+                                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                            </div>
+                            <div class="profile-action-btn">
+                                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content">
+                    <div id="profile-content">
+                        <div class="loading"><div class="spinner"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mission Drawer Overlay -->
+        </div>
+
+        <!-- Mission Drawer Overlay -->
+        <div class="mission-drawer-overlay" id="mission-drawer-overlay" onclick="closeMissionDrawer()"></div>
+
+        <!-- Mission Drawer -->
+        <div class="mission-drawer" id="mission-drawer">
+            <div class="mission-drawer-header">
+                <div class="mission-drawer-title">🎯 Текущее задание</div>
+                <button class="mission-drawer-close" onclick="closeMissionDrawer()">✕</button>
+            </div>
+            <div class="mission-drawer-body">
+                <div class="drawer-mission-card" id="drawer-mission-card">
+                    <div class="drawer-mission-title" id="drawer-mission-title">Загрузка...</div>
+                    <div class="drawer-mission-desc" id="drawer-mission-desc">Пожалуйста подождите...</div>
+                    <div class="drawer-mission-timer" id="drawer-mission-timer">0:00</div>
+                    <div class="drawer-progress-bar">
+                        <div class="drawer-progress-fill" id="drawer-progress-fill" style="width: 0%"></div>
+                    </div>
+                    <div class="drawer-progress-label">
+                        <span>Прогресс</span>
+                        <span id="drawer-progress-percent">0%</span>
+                    </div>
+                    <div class="drawer-stats-grid">
+                        <div class="drawer-stat-box">
+                            <div class="drawer-stat-label">Кликов</div>
+                            <div class="drawer-stat-value" id="drawer-stat-clicks">0</div>
+                        </div>
+                        <div class="drawer-stat-box">
+                            <div class="drawer-stat-label">Лишних</div>
+                            <div class="drawer-stat-value" id="drawer-stat-unnecessary">0</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="drawer-actions">
+                    <button class="drawer-btn" onclick="goToMissionScreen()">📋 Открыть полное задание</button>
+                    <button class="drawer-btn secondary" onclick="startNewMissionFromDrawer()">✨ Новое задание</button>
+                </div>
+                <div class="drawer-hint">
+                    Выполните задание, перемещаясь по приложению. Прогресс обновляется автоматически.
+                </div>
+            </div>
+        </div>
+
+        <!-- Mission Drawer Trigger (edge slider) -->
+        <button class="mission-drawer-trigger" id="mission-drawer-trigger" onclick="openMissionDrawer()">
+            <span class="trigger-badge" id="trigger-badge">!</span>
+            <span>Задание</span>
+        </button>
+
+        <!-- Bottom Navigation -->
+
+        <!-- Bottom Navigation -->
+        <div class="nav-bar">
+            <div class="nav-item active" data-screen="home-screen" onclick="switchScreen(event)">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                    <polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+                <span class="nav-label">Главная</span>
+            </div>
+            <div class="nav-item" data-screen="catalog-screen" onclick="switchScreen(event)">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="7" height="7"/>
+                    <rect x="14" y="3" width="7" height="7"/>
+                    <rect x="14" y="14" width="7" height="7"/>
+                    <rect x="3" y="14" width="7" height="7"/>
+                </svg>
+                <span class="nav-label">Каталог</span>
+            </div>
+            <div class="nav-item" data-screen="promo-screen" onclick="switchScreen(event)">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+                    <line x1="7" y1="7" x2="7.01" y2="7"/>
+                </svg>
+                <span class="nav-label">Акции</span>
+            </div>
+            <div class="nav-item" data-screen="profile-screen" onclick="switchScreen(event)">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                    <circle cx="12" cy="7" r="4"/>
+                </svg>
+                <span class="nav-label">Профиль</span>
+            </div>
+        </div>
+
+    <!-- Floating Cart Button -->
+    <div class="floating-cart-btn" id="floating-cart-btn" onclick="switchToScreen('cart-screen'); trackClick(currentScreen, 'cart-screen');">
+        <svg class="cart-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="21" r="1"/>
+            <circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+        </svg>
+        <span class="cart-badge" id="floating-cart-badge" style="display: none;">0</span>
+        <div class="floating-cart-label">Корзина</div>
+    </div>
+
+    <!-- Success Modal -->
+
+        <!-- Success Modal -->
+<div class="modal" id="success-modal">
+    <div class="modal-content">
+        <div class="modal-emoji">🎉</div>
+        <div class="modal-title">Отлично!</div>
+        <div class="modal-text">Задание выполнено успешно!</div>
+        <div class="modal-stats">
+            <div class="modal-stat-row">
+                <span>Время:</span>
+                <span id="modal-time">0 сек</span>
+            </div>
+            <div class="modal-stat-row">
+                <span>Всего кликов:</span>
+                <span id="modal-total-clicks">0</span>
+            </div>
+            <div class="modal-stat-row">
+                <span>Лишних кликов:</span>
+                <span id="modal-unnecessary-clicks">0</span>
+            </div>
+            <div class="modal-stat-row">
+                <span>Точность:</span>
+                <span id="modal-accuracy">0%</span>
+            </div>
+        </div>
+        <button class="modal-btn" onclick="startNewMission()">✨ Новое Задание</button>
+    </div>
+</div>
+
+    </div>
+
+    <script>
+        window.STATIC_DATA = {
+            categories: [
+                {"id":1,"name":"Овощи, фрукты","emoji":"🥦","count":234},
+                {"id":2,"name":"Готовая еда","emoji":"🍱","count":89},
+                {"id":3,"name":"Напитки","emoji":"🥤","count":456},
+                {"id":4,"name":"Хлеб и выпечка","emoji":"🍞","count":123},
+                {"id":5,"name":"Молочные продукты","emoji":"🥛","count":234},
+                {"id":6,"name":"Сыры и яйца","emoji":"🧀","count":98},
+                {"id":7,"name":"Мясная гастрономия","emoji":"🥩","count":167},
+                {"id":8,"name":"Кондитерские изделия","emoji":"🎂","count":145},
+            ],
+            products: [
+                {"id":1,"name":"Яблоки Гала, 1 кг","price":89,"old_price":109,"emoji":"🍎","discount":"-20%","category":"Фрукты"},
+                {"id":2,"name":"Молоко Простоквашино 3,2%","price":79,"old_price":null,"emoji":"🥛","discount":null,"category":"Молочные"},
+                {"id":3,"name":"Сыр Российский 50%, 200 г","price":149,"old_price":175,"emoji":"🧀","discount":"-15%","category":"Сыры"},
+                {"id":4,"name":"Хлеб Дарницкий, 700 г","price":55,"old_price":null,"emoji":"🍞","discount":null,"category":"Хлеб"},
+                {"id":5,"name":"Помидоры, 1 кг","price":99,"old_price":129,"emoji":"🍅","discount":"-23%","category":"Овощи"},
+                {"id":6,"name":"Огурцы, 1 кг","price":69,"old_price":null,"emoji":"🥒","discount":null,"category":"Овощи"},
+                {"id":7,"name":"Морковь, 1 кг","price":45,"old_price":65,"emoji":"🥕","discount":"-30%","category":"Овощи"},
+                {"id":8,"name":"Банан, 1 кг","price":79,"old_price":null,"emoji":"🍌","discount":null,"category":"Фрукты"},
+                {"id":9,"name":"Апельсины, 1 кг","price":84,"old_price":110,"emoji":"🍊","discount":"-23%","category":"Фрукты"},
+                {"id":10,"name":"Йогурт Активиа 200г","price":55,"old_price":75,"emoji":"🥛","discount":"-26%","category":"Молочные"},
+                {"id":11,"name":"Творог 9%, 200г","price":89,"old_price":null,"emoji":"🧈","discount":null,"category":"Молочные"},
+                {"id":12,"name":"Булка с маком","price":38,"old_price":null,"emoji":"🥐","discount":null,"category":"Хлеб"},
+                {"id":13,"name":"Колбаса вареная 300г","price":199,"old_price":249,"emoji":"🌭","discount":"-20%","category":"Мясо"},
+                {"id":14,"name":"Куриное филе, 600г","price":269,"old_price":null,"emoji":"🍗","discount":null,"category":"Мясо"},
+                {"id":15,"name":"Печенье 'Простое' 200г","price":45,"old_price":60,"emoji":"🍪","discount":"-25%","category":"Печенье"},
+            ],
+            promotions: [
+                {"id":1,"title":"Акция на овощи","description":"Скидка до 30% на свежие овощи","emoji":"🥦","discount":"-30%"},
+                {"id":2,"title":"Молочные продукты","description":"Выгодные комбо на 2+1","emoji":"🥛","discount":"Комбо"},
+                {"id":3,"title":"Выпечка дня","description":"Скидка до 40% на хлеб и булки","emoji":"🍞","discount":"-40%"},
+                {"id":4,"title":"Мясной день","description":"Лучшие цены на колбасы и мясо","emoji":"🥩","discount":"-25%"},
+            ],
+            profile: {"name":"Иванов Иван","email":"ivanov@dixy.ru","phone":"+7 (999) 123-45-67","status":"Клуб Друзей Дикси","loyalty_points":2340,"cashback_rate":"1,5%","avatar":"😊","member_since":"2022"}
+        };
+    </script>
+    <script src="static/js/app.js"></script>
+</body>
+</html>
