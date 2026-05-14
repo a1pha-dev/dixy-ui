@@ -29,3 +29,4 @@ env/
 .DS_Store
 *.log
 clicks.jsonl
+.perk
