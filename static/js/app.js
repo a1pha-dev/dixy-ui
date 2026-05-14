@@ -94,6 +94,12 @@
                 };
                 if (STATIC) {
                     console.log('[Analytics]', payload);
+                    // Persist to localStorage for later export (GitHub Pages has no backend)
+                    try {
+                        const logs = JSON.parse(localStorage.getItem('dixy_logs') || '[]');
+                        logs.push(payload);
+                        localStorage.setItem('dixy_logs', JSON.stringify(logs));
+                    } catch (e) { /* ignore */ }
                     return Promise.resolve();
                 }
                 return fetch('/api/click-log', {
@@ -830,6 +836,29 @@
 
         function switchToProducts() {
             switchToScreen('products-screen');
+        }
+
+        // Download accumulated logs (for GitHub Pages / static deployment)
+        function downloadLogs() {
+            try {
+                const logs = JSON.parse(localStorage.getItem('dixy_logs') || '[]');
+                if (logs.length === 0) {
+                    alert('Логи пусты');
+                    return;
+                }
+                const blob = new Blob([JSON.stringify(logs, null, 2)], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `dixy_logs_${state.abGroup || 'X'}_${new Date().toISOString().slice(0,19).replace(/[:T]/g,'-')}.json`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            } catch (e) {
+                console.error('Download failed', e);
+                alert('Ошибка при скачивании');
+            }
         }
 
         // Initialize on load
