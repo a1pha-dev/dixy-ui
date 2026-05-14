@@ -9,7 +9,7 @@ from app.models import Mission, MissionType, MissionStats
 class MissionGenerator:
     """Generate and manage missions"""
 
-    MISSION_TEMPLATES = [
+    MISSION_TEMPLATES_ALL = [
         {
             "type": MissionType.SCREEN,
             "title": "Откройте каталог товаров",
@@ -75,9 +75,15 @@ class MissionGenerator:
     def __init__(self):
         self.current_missions: Dict[str, Dict[str, Any]] = {}
 
-    def generate_mission(self) -> Dict[str, Any]:
-        """Generate a new random mission"""
-        mission_data = random.choice(self.MISSION_TEMPLATES).copy()
+    def generate_mission(self, ab_group: str = "A") -> Dict[str, Any]:
+        """Generate a new random mission, filtered by UI version"""
+        # Group B (conversion UI) has no summer tab, so exclude summer missions
+        is_b = ab_group.strip().upper() == "B"
+        available = [
+            t for t in self.MISSION_TEMPLATES_ALL
+            if not (is_b and t.get("target_screen") == "summer")
+        ]
+        mission_data = random.choice(available).copy()
         mission_id = str(uuid.uuid4())
 
         mission = {

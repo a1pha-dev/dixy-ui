@@ -7,9 +7,9 @@ router = APIRouter(prefix="/api", tags=["missions"])
 
 
 @router.get("/mission/new")
-async def create_mission():
-    """Generate a new mission"""
-    mission = mission_generator.generate_mission()
+async def create_mission(ab_group: str = "A"):
+    """Generate a new mission (respects UI version so summer missions don't appear in conversion UI)"""
+    mission = mission_generator.generate_mission(ab_group=ab_group)
     return mission
 
 
