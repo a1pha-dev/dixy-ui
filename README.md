@@ -1,416 +1,204 @@
-# 🎮 DIXY UI - A/B Testing Microservice v2.0 ✅
+# Dixy UI — A/B Testing Platform for Conversion Optimization
 
-## 📝 ГОТОВО К ИСПОЛЬЗОВАНИЮ!
+## Objective
 
-Полностью функциональный микросервис для тестирования UX/UI интерфейса шопинг-приложения с системой квестов и отслеживанием статистики.
+Increase order conversion rate by **1.5 percentage points** through data-driven A/B testing of the mobile storefront UI.
 
----
+The project compares two versions of the interface:
+- **Variant A (Reference)** — full-featured home screen with loyalty program, quick actions, brand grid, stories carousel, promo slider, and catalog preview.
+- **Variant B (Conversion-Optimized)** — stripped-down home screen focused on speed: prominent search, hero banner, horizontal category chips, and a direct product grid with one-tap add-to-cart. The seasonal "Summer" tab and all non-essential navigation paths are removed.
 
-## 🚀 БЫСТРЫЙ СТАРТ
-
-**Сервис уже запущен на:**
-```
-http://127.0.0.1:8000
-```
-
-**Открыть в браузере:** [http://127.0.0.1:8000](http://127.0.0.1:8000)
-
-### Если нужно перезапустить:
-```bash
-cd /Users/a1pha/PycharmProjects/dixy-ui-old
-uvicorn main:app --reload --host 127.0.0.1 --port 8000
-```
+Hypothesis: reducing cognitive load and click depth will shorten the path from landing to checkout, increasing the share of completed orders.
 
 ---
 
-## 📊 СТАТИСТИКА ПРОЕКТА
+## What Was Done
 
-| Метрика | Значение |
-|---------|----------|
-| **Всего строк кода** | 1,955 |
-| **Python код** | 435 строк |
-| **Frontend (HTML/JS/CSS)** | 1,520 строк |
-| **Модулей Python** | 6 файлов |
-| **API endpoints** | 11 endpoints |
-| **Экраны приложения** | 7 экранов |
-| **Товаров в каталоге** | 15+ товаров |
-| **Типов квестов** | 4 типа |
+### 1. UI Redesign (Variant A — Reference)
+- Redesigned home screen to match the Dixy mobile app reference screenshots:
+  - Compact loyalty header (level, cashback, coin balance, full-width barcode)
+  - 2×4 quick actions grid (products by card, purchases, coupons, stickers, favorites, categories, promo codes)
+  - Store address bar + search
+  - Two banners (assortment + mini-game)
+  - Popular brands grid (4×2) with inline SVG logos (Nescafé, Baltika, Ouch, O!Life, etc.)
+  - Stories-style promo scroll (vertical cards)
+  - Big promo carousel with scroll-snap
+  - Catalog preview (3×2 categories)
+- Redesigned profile screen with custom header, orange loyalty card, quick-action buttons, and settings list with icons.
+- Replaced emoji nav icons with inline SVG for consistent rendering.
 
----
+### 2. UI Redesign (Variant B — Conversion-Optimized)
+- Removed loyalty header, quick actions, brands, stories, promo carousel, and catalog preview from the home screen.
+- Added compact top bar with prominent search and promo badge.
+- Single focused hero banner.
+- Horizontal scrollable category chips for faster navigation.
+- **Direct product grid on the home screen** with a visible "+" add button — one click to add to cart.
+- Toast notification on every add-to-cart action.
+- Bottom nav reduced from 5 to 4 tabs (removed "Summer" tab).
 
-## ✨ ЧТО РЕАЛИЗОВАНО
+### 3. Navigation & Scrolling Fixes
+- Fixed broken DOM nesting (extra `</div>` tags in `profile.html` and `nav.html` that pushed the bottom bar outside the flex layout).
+- Restructured bottom navigation to 5 tabs (Home, Catalog, Summer, Promotions, Profile) with a floating cart pill button.
+- Fixed conflicting `overflow-y` rules: `.screen` is now the sole scroll container, `#home-screen` uses `display: block`, eliminating double scrollbars.
 
-### 🎯 Система квестов
-- ✅ Плавное отслеживание прогресса (не перебрасывает мгновенно)
-- ✅ Real-time таймер выполнения квеста
-- ✅ Счетчик всех кликов и "лишних" кликов
-- ✅ Автоматический расчет точности выполнения
-- ✅ 4 типа квестов (экран, товары, покупка, комбо)
-- ✅ Конфетти анимация при успехе
+### 4. A/B Testing Framework
+- **Random 50/50 assignment** on first visit, persisted in `localStorage` across sessions.
+- Assignment stored in `state.abGroup` (`'A'` or `'B'`).
+- CSS classes `ui-a` / `ui-b` on `<body>` toggle which home screen markup is displayed.
+- Manual override for testing: `localStorage.setItem('dixy_ab_group', 'A'); location.reload()`.
 
-### 📱 7 интерактивных экранов
-1. 🎮 **Квесты** - система заданий с прогрессом
-2. 📋 **Каталог** - 8 категорий товаров
-3. 🛍️ **Товары** - 15+ товаров с ценами
-4. 🎁 **Акции** - 4 активных промо-предложения
-5. ☀️ **Лето** - сезонные фрукты и овощи
-6. 🛒 **Корзина** - полное управление покупками
-7. 👤 **Профиль** - данные пользователя и бонусы
+### 5. Mission System with Version Awareness
+- Missions are generated server-side (or client-side for static builds) with the constraint that **Variant B users never receive missions requiring the "Summer" tab**, since that tab does not exist in the conversion UI.
+- Mission types: `SCREEN` (visit target screen), `ADD_ITEM` (add N items), `CHECKOUT` (complete purchase), `COMBO` (multi-step).
+- **Auto-completion logic**:
+  - `SCREEN` — completes when the target screen is entered.
+  - `ADD_ITEM` — completes when the required number of items is in the cart.
+  - `CHECKOUT` — completes when the checkout button is pressed.
+  - `COMBO` — tracks subtasks (`screen_*`, `add_item`, `checkout`) and completes when all are satisfied.
+- Guard flag `missionCompleting` prevents double completion.
+- Confetti animation fires on every successful completion.
 
-### 🛒 Корзина
-- ✅ Добавление/удаление товаров
-- ✅ Изменение количества
-- ✅ Автоматический расчет скидок (10%)
-- ✅ Отображение экономии
-- ✅ Оформление заказа
-- ✅ Бейдж с количеством товаров
+### 6. Detailed Analytics Logging
+Every screen transition and interaction now logs:
+- `from`, `to` — navigation path
+- `timestamp` — ISO-8601
+- `ab_group` — A or B variant
+- `session_id` — unique per browser session
+- `time_on_screen_ms` — dwell time on the previous screen
+- `cart_value` — total ruble value of the current cart
+- `cart_count` — number of distinct items in cart
 
-### 📊 Отслеживание статистики
-- ⏱️ **Время выполнения квеста** (в секундах)
-- 🖱️ **Всего кликов** (все действия)
-- 🔴 **Лишних кликов** (ненужные действия)
-- 📈 **Точность** (% полезных кликов от всех)
-
-### 🎨 UI/UX
-- ✅ Мобильный дизайн (390x844px)
-- ✅ iOS look & feel
-- ✅ Плавные анимации и переходы
-- ✅ Bottom navigation
-- ✅ Status bar
-- ✅ Toast уведомления
-- ✅ Модальные окна
-
-### 🔧 Архитектура
-- ✅ Модульная структура
-- ✅ REST API endpoints
-- ✅ Pydantic модели
-- ✅ Single Page App (SPA)
-- ✅ Git-ready проект
-- ✅ Production ready
+**Storage by environment:**
+- **Local server (`localhost:8000`)** — logs appended to `clicks.jsonl` (newline-delimited JSON) in the project root.
+- **GitHub Pages (static)** — logs accumulated in browser `localStorage` under key `dixy_logs`. After completing a mission, the user can press **"Download Logs"** in the success modal to receive a JSON file named `dixy_logs_{GROUP}_{TIMESTAMP}.json`.
 
 ---
 
-## 🔌 API ENDPOINTS
+## Architecture
 
-### Квесты/Миссии (3 endpoints)
-```bash
-GET  /api/mission/new                # Создать новое задание
-GET  /api/mission/{id}               # Получить задание по ID
-POST /api/mission/{id}/complete      # Завершить квест и получить статистику
+### Backend (FastAPI + Jinja2)
+```
+main.py                     FastAPI app, CORS, static mount, click-log endpoint
+app/config.py               Categories, products, promotions, user profile
+app/models.py               Pydantic models (Mission, MissionStats)
+app/missions.py             Mission generator with version-aware filtering
+app/routes_catalog.py       GET /api/catalog, /api/products, /api/all-products, /api/promotions, /api/profile
+app/routes_missions.py      GET /api/mission/new, /api/mission/{id}, POST /api/mission/{id}/complete
+app/analytics.py            ClickTracker — persists to clicks.jsonl
 ```
 
-### Каталог и товары (4 endpoints)
-```bash
-GET  /api/catalog                    # Получить все категории
-GET  /api/products                   # Получить избранные товары
-GET  /api/all-products               # Получить все товары (15+)
-GET  /api/promotions                 # Получить активные акции
+### Frontend (Vanilla JS + Single CSS)
 ```
-
-### Профиль (1 endpoint)
-```bash
-GET  /api/profile                    # Получить профиль пользователя
-```
-
-### Служебные (2 endpoints)
-```bash
-GET  /                               # Главное приложение
-GET  /health                         # Проверка статуса
+templates/app.html          Root shell, includes all screens and components
+templates/screens/
+  home.html                 Dual-variant home screen (A and B wrappers)
+  profile.html              Custom profile layout
+  catalog.html              Category grid
+  products.html             Product listing
+  cart.html                 Cart with quantity controls
+  promo.html                Promotions list
+  summer.html               Seasonal products
+templates/components/
+  nav.html                  Bottom tab bar + floating cart button
+  drawer.html               Mission progress drawer
+  modal.html                Success modal with stats + download button
+static/css/style.css        Single stylesheet (~2400 lines)
+static/js/app.js            State management, API wrapper, cart, mission logic, A/B assignment, log export
 ```
 
 ---
 
-## 🎯 ПРИМЕРЫ ИСПОЛЬЗОВАНИЯ
+## API Endpoints
 
-### Пример 1: Создать новый квест
-```bash
-curl http://127.0.0.1:8000/api/mission/new
-```
+### Catalog
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/catalog` | Product categories |
+| GET | `/api/all-products` | Full product catalog |
+| GET | `/api/promotions` | Active promotions |
+| GET | `/api/profile` | User profile |
 
-Ответ:
-```json
-{
-  "id": "95fa0677-4d49-454a-b922-37b20df0bc3a",
-  "type": "add_item",
-  "title": "Добавьте 2 товара в корзину",
-  "description": "Найдите и добавьте два разных товара",
-  "items_count": 2,
-  "start_time": "2026-05-12T23:05:07.900115",
-  "completed": false
-}
-```
+### Missions
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/mission/new?ab_group=A\|B` | Generate a mission filtered by UI variant |
+| GET | `/api/mission/{id}` | Retrieve mission state |
+| POST | `/api/mission/{id}/complete` | Complete mission with stats payload |
 
-### Пример 2: Завершить квест
-```bash
-curl -X POST http://127.0.0.1:8000/api/mission/95fa0677-4d49-454a-b922-37b20df0bc3a/complete \
-  -H "Content-Type: application/json" \
-  -d '{
-    "time_spent_seconds": 45,
-    "total_clicks": 12,
-    "unnecessary_clicks": 2
-  }'
-```
-
-Ответ:
-```json
-{
-  "mission_id": "95fa0677-4d49-454a-b922-37b20df0bc3a",
-  "mission_title": "Добавьте 2 товара в корзину",
-  "time_spent_seconds": 45,
-  "total_clicks": 12,
-  "unnecessary_clicks": 2,
-  "accuracy": 83.3,
-  "completed_at": "2026-05-12T23:10:45.123456"
-}
-```
+### Analytics
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/api/click-log` | Log interaction with `ab_group`, `session_id`, `time_on_screen_ms`, `cart_value`, `cart_count` |
+| GET | `/api/analytics/clicks` | Aggregated click statistics |
 
 ---
 
-## 📂 СТРУКТУРА ПРОЕКТА
+## Running Locally
 
-```
-dixy-ui-old/
-├── main.py                      # FastAPI приложение (67 строк)
-├── requirements.txt             # Зависимости Python
-├── README.md                    # Документация (этот файл)
-├── SETUP_COMPLETE.md            # Полная инструкция
-├── GITHUB_README.md             # English documentation
-├── FINAL_STATUS.sh              # Финальный статус
-├── GITHUB_UPLOAD.sh             # Инструкция GitHub
-├── .gitignore                   # Git ignore rules
-├── .git/                        # Git репозиторий
-
-app/                            # Python модули
-├── __init__.py
-├── config.py                    # Конфиг + данные (58 строк)
-├── models.py                    # Pydantic модели (90 строк)
-├── missions.py                  # Логика квестов (141 строк)
-├── routes_catalog.py            # API каталога (36 строк)
-└── routes_missions.py           # API квестов (41 строк)
-
-templates/                      # Frontend
-└── app.html                     # SPA приложение (1,520 строк)
-```
-
----
-
-## 🛠️ ТРЕБОВАНИЯ
-
-- Python 3.8+
-- FastAPI 0.110.0+
-- Uvicorn 0.29.0+
-- Pydantic 2.0.0+
-
----
-
-## 📦 УСТАНОВКА И ЗАПУСК
-
-### 1. Установить зависимости
 ```bash
 cd /Users/a1pha/PycharmProjects/dixy-ui-old
 pip install -r requirements.txt
+uvicorn main:app --host 0.0.0.0 --port 8000
 ```
 
-### 2. Запустить сервис
-```bash
-uvicorn main:app --reload --host 127.0.0.1 --port 8000
-```
+Open `http://localhost:8000` in a mobile-width browser viewport (390×844 recommended).
 
-### 3. Открыть в браузере
+---
+
+## GitHub Pages Deployment
+
+The `docs/` folder contains a fully static build (pre-rendered HTML + embedded data + client-side JS).
+
+1. In repository **Settings → Pages**, set:
+   - Source: **Deploy from a branch**
+   - Branch: `main` → `/docs` folder
+2. Save. The site will be available at `https://<username>.github.io/<repo>/`.
+3. In static mode, missions are generated client-side and analytics are stored in `localStorage` until manually downloaded.
+
+---
+
+## Project Structure
+
 ```
-http://127.0.0.1:8000
+dixy-ui-old/
+├── main.py
+├── requirements.txt
+├── build_static.py          # Pre-renders templates into docs/index.html
+├── clicks.jsonl             # Local server analytics log
+├── app/
+│   ├── config.py
+│   ├── models.py
+│   ├── missions.py
+│   ├── analytics.py
+│   ├── routes_catalog.py
+│   └── routes_missions.py
+├── templates/
+│   ├── app.html
+│   ├── screens/
+│   │   ├── home.html
+│   │   ├── profile.html
+│   │   ├── catalog.html
+│   │   ├── products.html
+│   │   ├── cart.html
+│   │   ├── promo.html
+│   │   └── summer.html
+│   └── components/
+│       ├── nav.html
+│       ├── drawer.html
+│       └── modal.html
+├── static/
+│   ├── css/style.css
+│   └── js/app.js
+└── docs/                    # Static build output for GitHub Pages
+    ├── index.html
+    └── static/
+        ├── css/style.css
+        └── js/app.js
 ```
 
 ---
 
-## 🌐 ЗАГРУЗКА НА GITHUB
+## Version
 
-### Шаг 1: Создать репозиторий
-Перейдите на [https://github.com/new](https://github.com/new)
-- Название: `dixy-ui`
-- Описание: `Interactive shopping UI with quest system`
-- Выберите: Public
-
-### Шаг 2: Загрузить код
-```bash
-cd /Users/a1pha/PycharmProjects/dixy-ui-old
-git remote add origin https://github.com/YOUR_USERNAME/dixy-ui.git
-git branch -M main
-git push -u origin main
-```
-
-### Шаг 3: Готово!
-Ваш репозиторий доступен по адресу:
-```
-https://github.com/YOUR_USERNAME/dixy-ui
-```
-
----
-
-## 📊 ТОВАРЫ В КАТАЛОГЕ
-
-**Фрукты и овощи:**
-- 🍎 Яблоки Гала, 1 кг (89₽, -20%)
-- 🍌 Банан, 1 кг (79₽)
-- 🍊 Апельсины, 1 кг (84₽, -23%)
-- 🍅 Помидоры, 1 кг (99₽, -23%)
-- 🥒 Огурцы, 1 кг (69₽)
-- 🥕 Морковь, 1 кг (45₽, -30%)
-
-**Молочные продукты:**
-- 🥛 Молоко Простоквашино 3,2% (79₽)
-- 🥛 Йогурт Активиа 200г (55₽, -26%)
-- 🧀 Сыр Российский 50%, 200г (149₽, -15%)
-- 🧈 Творог 9%, 200г (89₽)
-
-**Хлеб и выпечка:**
-- 🍞 Хлеб Дарницкий, 700г (55₽)
-- 🥐 Булка с маком (38₽)
-
-**Мясо и деликатесы:**
-- 🌭 Колбаса вареная 300g (199₽, -20%)
-- 🍗 Куриное филе, 600g (269₽)
-
-**Печенье:**
-- 🍪 Печенье 'Простое' 200g (45₽, -25%)
-
----
-
-## 🎓 ПРИМЕРЫ СЦЕНАРИЕВ ИСПОЛЬЗОВАНИЯ
-
-### Сценарий 1: Простое добавление товара
-```
-1. Пользователь открывает приложение
-2. Получает квест: "Добавьте товар в корзину"
-3. Переходит на экран "Товары"
-4. Нажимает кнопку "Добавить" на товаре
-5. Прогресс обновляется (0% → 100%)
-6. Нажимает "Оформить покупку"
-7. КОНФЕТТИ! 🎉
-8. Показывается статистика:
-   - Время: 30 сек
-   - Кликов: 4
-   - Лишних: 0
-   - Точность: 100%
-```
-
-### Сценарий 2: Комбо квест
-```
-1. Квест: "Посетите каталог, добавьте 2 товара и купите"
-2. Нажимает "Каталог" (25% прогресса)
-3. Переходит в "Товары" (заметает автоматически)
-4. Добавляет товар #1 (50%)
-5. Добавляет товар #2 (75%)
-6. Нажимает "Оформить покупку" (100%)
-7. Успешно! Модальное окно с конфетти
-8. Статистика показывает все метрики
-```
-
----
-
-## 💡 КАСТОМИЗАЦИЯ
-
-### Изменить товары
-Отредактируйте `app/config.py`:
-```python
-PRODUCTS = [
-    {"id": 1, "name": "Ваш товар", "price": 100, ...},
-    ...
-]
-```
-
-### Добавить новый тип квеста
-Отредактируйте `app/missions.py`:
-```python
-MISSION_TEMPLATES = [
-    {
-        "type": MissionType.YOUR_TYPE,
-        "title": "Ваш квест",
-        "description": "Описание",
-        ...
-    },
-    ...
-]
-```
-
-### Изменить цвета
-В `templates/app.html` найдите и замените:
-```css
-/* Основной цвет: #FF6B00 (оранжевый) */
-/* Замените на свой цвет */
-```
-
----
-
-## 📈 ДЛЯ АНАЛИТИКИ
-
-Все действия пользователя отслеживаются:
-- 🖱️ Каждый клик (полезный и бесполезный)
-- ⏱️ Время выполнения каждого квеста
-- 📊 Метрики успешности
-- 🎯 Показатели точности
-- 📉 Процент отката (ненужных действий)
-
-Интегрируйте с вашей аналитической системой через API!
-
----
-
-## 🐛 TROUBLESHOOTING
-
-### Сервис не запускается
-```bash
-# Проверьте статус
-curl http://127.0.0.1:8000/health
-
-# Переустановите зависимости
-pip install --upgrade -r requirements.txt
-
-# Перезагрузите сервис
-```
-
-### API не отвечает
-```bash
-# Проверьте порт 8000
-lsof -i :8000
-
-# Перезапустите uvicorn
-uvicorn main:app --reload --host 127.0.0.1 --port 8000
-```
-
-### Frontend не грузится
-- Очистите кэш браузера (Ctrl+Shift+Delete)
-- Откройте DevTools (F12) и смотрите консоль
-
----
-
-## 📝 ЛИЦЕНЗИЯ
-
-MIT License
-
----
-
-## 🙌 БЛАГОДАРНОСТИ
-
-Создано для A/B тестирования UX/UI интерфейсов.
-
----
-
-## 📞 ПОДДЕРЖКА
-
-Все основные возможности реализованы и готовы к использованию.
-
-Для вопросов обращайтесь к документации:
-- `README.md` - Полная документация
-- `SETUP_COMPLETE.md` - Инструкция использования
-- `GITHUB_README.md` - English version
-
----
-
-**Версия:** 2.0.0  
-**Дата:** май 2026  
-**Статус:** ✅ Production Ready  
-
----
-
-Made with ❤️ for A/B Testing UI Flows
+**2.1.0** — May 2026
 
